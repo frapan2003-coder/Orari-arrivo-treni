@@ -1,0 +1,42 @@
+name: Monitoraggio ritardi treni Chieri
+
+on:
+  schedule:
+    # Ogni 10 minuti, tutti i giorni. GitHub non garantisce la precisione
+    # al minuto: nei momenti di carico può slittare di qualche minuto.
+    - cron: "*/10 * * * *"
+    # Report di fine giornata (23:55 ora italiana = 21:55 UTC in estate,
+    # 22:55 UTC in inverno). Adatta se necessario.
+    - cron: "55 21 * * *"
+  workflow_dispatch: {}   # permette di lanciarlo manualmente da GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rileva tabellone arrivi
+        run: python tracker.py
+
+      - name: Genera report giornaliero (solo se è l'esecuzione delle 21:55 UTC)
+        run: |
+          HOUR_MIN=$(date -u +%H:%M)
+          if [ "$HOUR_MIN" = "21:55" ]; then
+            python generate_report.py
+          fi
+
+      - name: Commit dati aggiornati
+        run: |
+          git config user.name "train-delay-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          git diff --quiet --cached || git commit -m "Aggiornamento dati $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
