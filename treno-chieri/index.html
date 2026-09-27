@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ritardi treni — Chieri</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, system-ui, sans-serif;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+    background: #fafafa;
+    color: #1a1a1a;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #121212; color: #eee; }
+    .card { background: #1e1e1e !important; }
+    table { color: #eee; }
+    th { background: #2a2a2a !important; }
+  }
+  h1 { font-size: 1.3rem; margin-bottom: 4px; }
+  .subtitle { color: #777; font-size: 0.9rem; margin-bottom: 20px; }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .stat { text-align: center; }
+  .stat .value { font-size: 1.6rem; font-weight: 700; }
+  .stat .label { font-size: 0.75rem; color: #888; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #eee; }
+  th { background: #f0f0f0; position: sticky; top: 0; }
+  select { padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; }
+  #status { color: #888; font-size: 0.85rem; }
+  .late { color: #d32f2f; font-weight: 600; }
+  .ontime { color: #2e7d32; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>🚆 Ritardi treni — arrivi a Chieri</h1>
+<div class="subtitle">Dati raccolti automaticamente da ViaggiaTreno</div>
+
+<div class="card">
+  <div id="status">Caricamento dati…</div>
+  <canvas id="trendChart" height="160"></canvas>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">Dettaglio giornaliero</h3>
+  <select id="daySelect"></select>
+  <div style="overflow-x:auto; margin-top:10px;">
+    <table id="detailTable">
+      <thead>
+        <tr><th>Treno</th><th>Da</th><th>Orario previsto</th><th>Ritardo</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const SUMMARY_URL = "data/summary.csv";
+const REPORT_URL_TEMPLATE = "data/reports/report_{day}.csv";
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const headers = lines[0].split(",");
+  return lines.slice(1).map(line => {
+    const cells = line.split(",");
+    const row = {};
+    headers.forEach((h, i) => row[h] = cells[i]);
+    return row;
+  });
+}
+
+async function loadSummary() {
+  const res = await fetch(SUMMARY_URL, { cache: "no-store" });
+  if (!res.ok) throw new Error("summary.csv non trovato");
+  const rows = parseCSV(await res.text());
+  return rows;
+}
+
+async function loadDayDetail(day) {
+  const url = REPORT_URL_TEMPLATE.replace("{day}", day);
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) return [];
+  return parseCSV(await res.text());
+}
+
+function renderChart(rows) {
+  const ctx = document.getElementById("trendChart");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: rows.map(r => r.data),
+      datasets: [
+        {
+          label: "Ritardo medio (min)",
+          data: rows.map(r => parseFloat(r.ritardo_medio_min) || null),
+          borderColor: "#1976d2",
+          backgroundColor: "rgba(25,118,210,0.1)",
+          tension: 0.3,
+        },
+        {
+          label: "Ritardo massimo (min)",
+          data: rows.map(r => parseFloat(r.ritardo_massimo_min) || null),
+          borderColor: "#d32f2f",
+          borderDash: [5,5],
+          tension: 0.3,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: "minuti" } } }
+    }
+  });
+}
+
+function renderDetailTable(rows) {
+  const tbody = document.querySelector("#detailTable tbody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const delay = parseInt(r.ritardo_minuti);
+    const delayClass = isNaN(delay) ? "" : (delay > 5 ? "late" : "ontime");
+    const delayText = isNaN(delay) ? "n/d" : (delay + " min");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${r.numero_treno ?? ""}</td>
+      <td>${r.origine ?? ""}</td>
+      <td>${r.orario_arrivo_previsto ?? ""}</td>
+      <td class="${delayClass}">${delayText}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+async function init() {
+  const statusEl = document.getElementById("status");
+  try {
+    const summary = await loadSummary();
+    if (summary.length === 0) {
+      statusEl.textContent = "Nessun dato ancora disponibile.";
+      return;
+    }
+    statusEl.textContent = `${summary.length} giorni di dati raccolti — aggiornato al ${summary[summary.length-1].data}`;
+    renderChart(summary);
+
+    const select = document.getElementById("daySelect");
+    summary.slice().reverse().forEach(r => {
+      const opt = document.createElement("option");
+      opt.value = r.data;
+      opt.textContent = r.data;
+      select.appendChild(opt);
+    });
+
+    async function refreshDetail() {
+      const day = select.value;
+      const detail = await loadDayDetail(day);
+      renderDetailTable(detail);
+    }
+    select.addEventListener("change", refreshDetail);
+    await refreshDetail();
+
+  } catch (e) {
+    statusEl.textContent = "Dati non ancora disponibili (il primo report arriva a fine della prima giornata di raccolta).";
+    console.error(e);
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>
