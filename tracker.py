@@ -18,8 +18,10 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 import urllib.request
 import urllib.error
+import urllib.parse
 import json
 
 BASE_URL = "http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno"
@@ -95,12 +97,40 @@ def get_station_code(name):
     return chosen[1]
 
 
-def fetch_arrivals(station_code, when_ms=None):
+_WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def js_style_timestamp(now_utc=None):
+    """Genera una stringa data nel formato che ViaggiaTreno si aspetta per
+    gli endpoint arrivi/partenze, equivalente a new Date().toString() in
+    JavaScript eseguito in Italia, es:
+    'Sat Sep 27 2026 22:30:00 GMT+0200 (Ora legale dell'Europa centrale)'
+    """
+    if now_utc is None:
+        now_utc = datetime.now(timezone.utc)
+    rome = now_utc.astimezone(ZoneInfo("Europe/Rome"))
+    offset = rome.utcoffset()
+    total_minutes = int(offset.total_seconds() // 60)
+    sign = "+" if total_minutes >= 0 else "-"
+    total_minutes = abs(total_minutes)
+    offset_str = f"GMT{sign}{total_minutes // 60:02d}{total_minutes % 60:02d}"
+    tzname = ("Ora legale dell'Europa centrale" if offset.total_seconds() == 7200
+               else "Ora solare dell'Europa centrale")
+    return (
+        f"{_WEEKDAYS[rome.weekday()]} {_MONTHS[rome.month - 1]} {rome.day:02d} "
+        f"{rome.year} {rome.hour:02d}:{rome.minute:02d}:{rome.second:02d} "
+        f"{offset_str} ({tzname})"
+    )
+
+
+def fetch_arrivals(station_code, when_str=None):
     """Scarica il tabellone arrivi per la stazione al timestamp indicato
     (default: adesso)."""
-    if when_ms is None:
-        when_ms = int(time.time() * 1000)
-    url = f"{BASE_URL}/arrivi/{station_code}/{when_ms}"
+    if when_str is None:
+        when_str = js_style_timestamp()
+    url = f"{BASE_URL}/arrivi/{station_code}/{urllib.parse.quote(when_str, safe='')}"
     data = http_get_json(url)
     return data or []
 
@@ -180,5 +210,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import urllib.parse
     main()
