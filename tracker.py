@@ -29,17 +29,31 @@ RAW_LOG_PATH = os.path.join(DATA_DIR, "raw_log.csv")
 STATION_CACHE_PATH = os.path.join(DATA_DIR, "station_code.txt")
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; TrainDelayTracker/1.0)"
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "it-IT,it;q=0.9",
+    "Referer": "http://www.viaggiatreno.it/infomobilita/index.jsp",
 }
 
 
 def http_get_json(url, timeout=15):
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        raw = resp.read().decode("utf-8")
-        if not raw.strip():
-            return None
-        return json.loads(raw)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw = resp.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(
+            f"HTTP {e.code} da {url}\nCorpo risposta del server: {body[:500]!r}",
+            file=sys.stderr,
+        )
+        raise
+    if not raw.strip():
+        return None
+    return json.loads(raw)
 
 
 def get_station_code(name):
