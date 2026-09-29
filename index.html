@@ -22,7 +22,8 @@
     th { background: #2a2a2a !important; }
   }
   h1 { font-size: 1.3rem; margin-bottom: 4px; }
-  .subtitle { color: #777; font-size: 0.9rem; margin-bottom: 20px; }
+  .subtitle { color: #777; font-size: 0.9rem; margin-bottom: 4px; }
+  .meta-line { color: #888; font-size: 0.85rem; margin-bottom: 16px; }
   .card {
     background: white;
     border-radius: 12px;
@@ -30,10 +31,6 @@
     margin-bottom: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
-  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .stat { text-align: center; }
-  .stat .value { font-size: 1.6rem; font-weight: 700; }
-  .stat .label { font-size: 0.75rem; color: #888; }
   table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
   th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #eee; }
   th { background: #f0f0f0; position: sticky; top: 0; }
@@ -42,16 +39,49 @@
   .late { color: #d32f2f; font-weight: 600; }
   .warning { color: #e65100; font-weight: 600; }
   .ontime { color: #2e7d32; font-weight: 600; }
-  .scope-row { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
-  .avg-delay { text-align: center; margin-top: 4px; }
+
+  /* Banner riepilogo in cima */
+  .banner {
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 6px solid;
+  }
+  .banner .banner-title { font-size: 0.8rem; opacity: 0.8; margin-bottom: 4px; }
+  .banner .banner-main { font-size: 1.25rem; font-weight: 700; }
+  .banner-green  { background: rgba(46,125,50,0.13);  border-color: #2e7d32; }
+  .banner-orange { background: rgba(230,81,0,0.13);   border-color: #e65100; }
+  .banner-red    { background: rgba(211,47,47,0.13);  border-color: #d32f2f; }
+
+  /* Selettore a pillole */
+  .pill-group { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .pill {
+    border: 1px solid #ccc;
+    background: transparent;
+    color: inherit;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .pill.active { background: #1976d2; border-color: #1976d2; color: white; font-weight: 600; }
+
+  .avg-delay { text-align: center; margin-top: 4px; margin-bottom: 8px; }
   .avg-delay .value { font-size: 2rem; font-weight: 700; color: #1976d2; }
   .avg-delay .label { font-size: 0.8rem; color: #888; }
+  .select-row { display: flex; flex-wrap: wrap; align-items: center; }
 </style>
 </head>
 <body>
 
 <h1>🚆 Ritardi treni — arrivi a Chieri</h1>
 <div class="subtitle">Dati raccolti automaticamente da ViaggiaTreno</div>
+<div class="meta-line" id="metaLine">Caricamento…</div>
+
+<div class="card banner" id="todayBanner">
+  <div class="banner-title" id="bannerTitle">Ultimo giorno registrato</div>
+  <div class="banner-main" id="bannerMain">–</div>
+</div>
 
 <div class="card">
   <div id="status">Caricamento dati…</div>
@@ -60,20 +90,20 @@
 
 <div class="card">
   <h3 style="margin-top:0">Statistiche</h3>
-  <div class="scope-row">
-    <select id="scopeSelect">
-      <option value="giorno">Giornaliero</option>
-      <option value="mese">Mensile</option>
-      <option value="totale">Totale</option>
-    </select>
+  <div class="pill-group" id="scopePills">
+    <button class="pill active" data-scope="giorno">Giornaliero</button>
+    <button class="pill" data-scope="mese">Mensile</button>
+    <button class="pill" data-scope="totale">Totale</button>
+  </div>
+  <div class="select-row">
     <select id="daySelectStats"></select>
     <select id="monthSelectStats" style="display:none;"></select>
   </div>
   <div class="avg-delay">
     <div class="value" id="avgDelayValue">–</div>
-    <div class="label" id="avgDelayLabel">ritardo medio (min), solo treni arrivati</div>
+    <div class="label">ritardo medio (min), solo treni arrivati</div>
   </div>
-  <canvas id="bucketChart" height="180"></canvas>
+  <canvas id="bucketChart" height="220"></canvas>
   <div style="font-size:0.75rem; color:#888; margin-top:6px;">
     Percentuali calcolate solo sui treni con esito noto (arrivati + soppressi/limitati);
     i treni ancora "non arrivati" al momento del rilevamento non vengono conteggiati.
@@ -83,7 +113,10 @@
 <div class="card">
   <h3 style="margin-top:0">Dettaglio giornaliero</h3>
   <select id="daySelect"></select>
-  <div style="overflow-x:auto; margin-top:10px;">
+
+  <canvas id="dailyDelayChart" height="180" style="margin-top:12px;"></canvas>
+
+  <div style="overflow-x:auto; margin-top:14px;">
     <table id="detailTable">
       <thead>
         <tr><th>Treno</th><th>Da</th><th>Orario previsto</th><th>Esito</th></tr>
@@ -121,8 +154,51 @@ async function loadDayDetail(day) {
   return parseCSV(await res.text());
 }
 
-function renderChart(rows) {
+// Soglie colore condivise in tutta la pagina: verde <3, arancione 3-5 (escluso 5), rosso >=5
+function colorForDelay(min) {
+  if (min === null || min === undefined || isNaN(min)) return "#9e9e9e";
+  if (min < 3) return "#2e7d32";
+  if (min < 5) return "#e65100";
+  return "#d32f2f";
+}
+function bannerClassForDelay(min) {
+  if (min === null || min === undefined || isNaN(min)) return "banner-orange";
+  if (min < 3) return "banner-green";
+  if (min < 5) return "banner-orange";
+  return "banner-red";
+}
+
+// ---- 1. Banner riepilogo ultimo giorno ----
+function renderBanner(summary) {
+  const last = summary[summary.length - 1];
+  const el = document.getElementById("todayBanner");
+  const title = document.getElementById("bannerTitle");
+  const main = document.getElementById("bannerMain");
+  const ritardoMedio = parseFloat(last.ritardo_medio_min);
+  const puntuali = last.n_puntuali_sotto3;
+  const totali = last.n_treni_osservati;
+
+  title.textContent = `Ultimo giorno registrato — ${last.data}`;
+  const ritardoTxt = isNaN(ritardoMedio) ? "n/d" : `${ritardoMedio} min`;
+  main.textContent = `Ritardo medio ${ritardoTxt} — ${puntuali} puntuali su ${totali} treni`;
+
+  el.classList.remove("banner-green", "banner-orange", "banner-red");
+  el.classList.add(bannerClassForDelay(ritardoMedio));
+}
+
+// ---- 6. Riga con giorno di raccolta e treni totali campionati ----
+function renderMetaLine(summary) {
+  const totaleTreni = summary.reduce((s, r) => s + (parseInt(r.n_treni_osservati) || 0), 0);
+  document.getElementById("metaLine").textContent =
+    `Giorno ${summary.length} — ${totaleTreni} treni campionati finora`;
+}
+
+// ---- 4. Grafico andamento nel tempo, colorato per gravità ----
+function renderTrendChart(rows) {
   const ctx = document.getElementById("trendChart");
+  const medi = rows.map(r => parseFloat(r.ritardo_medio_min));
+  const massimi = rows.map(r => parseFloat(r.ritardo_massimo_min));
+
   new Chart(ctx, {
     type: "line",
     data: {
@@ -130,17 +206,24 @@ function renderChart(rows) {
       datasets: [
         {
           label: "Ritardo medio (min)",
-          data: rows.map(r => parseFloat(r.ritardo_medio_min) || null),
-          borderColor: "#1976d2",
-          backgroundColor: "rgba(25,118,210,0.1)",
-          tension: 0.3,
+          data: medi,
+          borderWidth: 3,
+          pointRadius: 4,
+          pointBackgroundColor: medi.map(v => colorForDelay(v)),
+          pointBorderColor: medi.map(v => colorForDelay(v)),
+          segment: {
+            borderColor: c => colorForDelay((c.p0.parsed.y + c.p1.parsed.y) / 2),
+          },
+          tension: 0.25,
         },
         {
           label: "Ritardo massimo (min)",
-          data: rows.map(r => parseFloat(r.ritardo_massimo_min) || null),
-          borderColor: "#d32f2f",
-          borderDash: [5,5],
-          tension: 0.3,
+          data: massimi,
+          borderColor: "#bbbbbb",
+          borderDash: [4, 4],
+          pointRadius: 0,
+          borderWidth: 1.5,
+          tension: 0.25,
         }
       ]
     },
@@ -165,15 +248,10 @@ function renderDetailTable(rows) {
       stateLabel = r.provvedimento || (r.esito === "soppresso" ? "Treno soppresso" : "Treno limitato/parzialmente soppresso");
     } else {
       const d = parseInt(r.ritardo_minuti);
-      if (isNaN(d)) {
-        stateClass = "";
-      } else if (d < 3) {
-        stateClass = "ontime";
-      } else if (d < 5) {
-        stateClass = "warning";
-      } else {
-        stateClass = "late";
-      }
+      if (isNaN(d)) { stateClass = ""; }
+      else if (d < 3) { stateClass = "ontime"; }
+      else if (d < 5) { stateClass = "warning"; }
+      else { stateClass = "late"; }
       stateLabel = r.ritardo_testo || (isNaN(d) ? "" : `${d} min`);
     }
     const tr = document.createElement("tr");
@@ -187,10 +265,59 @@ function renderDetailTable(rows) {
   });
 }
 
-// ---- Sezione statistiche (giorno / mese / totale) ----
+// ---- Nuovo grafico: ritardo per treno nella giornata selezionata ----
+let dailyDelayChartInstance = null;
+function renderDailyDelayChart(detail) {
+  const ctx = document.getElementById("dailyDelayChart");
+  const labels = detail.map(r => r.orario_arrivo_previsto || r.numero_treno);
+  const valori = detail.map(r => {
+    const v = parseFloat(r.ritardo_minuti);
+    return isNaN(v) ? null : v;
+  });
+  const colori = valori.map(v => colorForDelay(v));
 
+  const data = {
+    labels,
+    datasets: [{
+      label: "Ritardo (min)",
+      data: valori,
+      spanGaps: false,
+      borderWidth: 3,
+      pointRadius: 4,
+      pointBackgroundColor: colori,
+      pointBorderColor: colori,
+      segment: {
+        borderColor: c => colorForDelay(
+          (((c.p0.parsed.y ?? 0)) + ((c.p1.parsed.y ?? 0))) / 2
+        ),
+      },
+      tension: 0.3,
+    }]
+  };
+
+  if (dailyDelayChartInstance) {
+    dailyDelayChartInstance.data = data;
+    dailyDelayChartInstance.update();
+    return;
+  }
+  dailyDelayChartInstance = new Chart(ctx, {
+    type: "line",
+    data,
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: "minuti di ritardo" } },
+        x: { title: { display: true, text: "orario previsto" } },
+      }
+    }
+  });
+}
+
+// ---- 3. Grafico a ciambella (percentuali) + selettore Giorno/Mese/Totale ----
 let bucketChartInstance = null;
 let summaryRowsGlobal = [];
+let currentScope = "giorno";
 
 function aggregateRows(rows) {
   const num = (v) => parseFloat(v) || 0;
@@ -215,11 +342,7 @@ function aggregateRows(rows) {
 
   return {
     ritardoMedio: nArrivatiTot > 0 ? Math.round((sommaRitardoPonderata / nArrivatiTot) * 10) / 10 : null,
-    denom,
-    pctSotto3: pct(sotto3),
-    pctTra3e5: pct(tra3e5),
-    pctOltre5: pct(oltre5),
-    pctSoppressi: pct(nSoppTot),
+    pctSotto3: pct(sotto3), pctTra3e5: pct(tra3e5), pctOltre5: pct(oltre5), pctSoppressi: pct(nSoppTot),
   };
 }
 
@@ -238,23 +361,24 @@ function renderBucketChart(stats) {
     return;
   }
   bucketChartInstance = new Chart(ctx, {
-    type: "bar",
+    type: "doughnut",
     data,
     options: {
       responsive: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: "% treni" } } }
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: { callbacks: { label: c => `${c.label}: ${c.parsed}%` } },
+      },
     }
   });
 }
 
 function refreshStats() {
-  const scope = document.getElementById("scopeSelect").value;
   let rows = [];
-  if (scope === "giorno") {
+  if (currentScope === "giorno") {
     const day = document.getElementById("daySelectStats").value;
     rows = summaryRowsGlobal.filter(r => r.data === day);
-  } else if (scope === "mese") {
+  } else if (currentScope === "mese") {
     const mese = document.getElementById("monthSelectStats").value;
     rows = summaryRowsGlobal.filter(r => r.data && r.data.startsWith(mese));
   } else {
@@ -266,9 +390,23 @@ function refreshStats() {
   renderBucketChart(stats);
 }
 
+// ---- 8. Selettore a pillole Giorno/Mese/Totale ----
+function setupScopePills() {
+  const pills = document.querySelectorAll("#scopePills .pill");
+  pills.forEach(btn => {
+    btn.addEventListener("click", () => {
+      pills.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentScope = btn.dataset.scope;
+      document.getElementById("daySelectStats").style.display = currentScope === "giorno" ? "" : "none";
+      document.getElementById("monthSelectStats").style.display = currentScope === "mese" ? "" : "none";
+      refreshStats();
+    });
+  });
+}
+
 function setupStatsControls(summary) {
   summaryRowsGlobal = summary;
-  const scopeSelect = document.getElementById("scopeSelect");
   const daySelectStats = document.getElementById("daySelectStats");
   const monthSelectStats = document.getElementById("monthSelectStats");
 
@@ -285,16 +423,10 @@ function setupStatsControls(summary) {
     monthSelectStats.appendChild(opt);
   });
 
-  function updateVisibility() {
-    const scope = scopeSelect.value;
-    daySelectStats.style.display = scope === "giorno" ? "" : "none";
-    monthSelectStats.style.display = scope === "mese" ? "" : "none";
-    refreshStats();
-  }
-  scopeSelect.addEventListener("change", updateVisibility);
+  setupScopePills();
   daySelectStats.addEventListener("change", refreshStats);
   monthSelectStats.addEventListener("change", refreshStats);
-  updateVisibility();
+  refreshStats();
 }
 
 async function init() {
@@ -306,7 +438,9 @@ async function init() {
       return;
     }
     statusEl.textContent = `${summary.length} giorni di dati raccolti — aggiornato al ${summary[summary.length-1].data}`;
-    renderChart(summary);
+    renderBanner(summary);
+    renderMetaLine(summary);
+    renderTrendChart(summary);
     setupStatsControls(summary);
 
     const select = document.getElementById("daySelect");
@@ -320,6 +454,7 @@ async function init() {
     async function refreshDetail() {
       const day = select.value;
       const detail = await loadDayDetail(day);
+      renderDailyDelayChart(detail);
       renderDetailTable(detail);
     }
     select.addEventListener("change", refreshDetail);
@@ -336,4 +471,5 @@ init();
 
 </body>
 </html>
+
 
