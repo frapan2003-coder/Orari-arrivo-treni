@@ -94,7 +94,15 @@ def write_daily_detail(target_day, detail):
     return path
 
 
-def append_summary(target_day, detail):
+SUMMARY_HEADER = [
+    "data", "n_treni_osservati", "n_arrivati", "n_non_arrivati",
+    "n_soppressi_o_limitati", "n_puntuali_sotto3", "n_ritardo_3_5",
+    "n_ritardo_oltre5", "ritardo_medio_min", "ritardo_mediano_min",
+    "ritardo_massimo_min",
+]
+
+
+def stats_for_day_detail(detail):
     arrivati = [d for d in detail if d["esito"] == "arrivato"]
     non_arrivati = [d for d in detail if d["esito"] == "non_arrivato"]
     soppressi = [d for d in detail if d["esito"] in ("soppresso", "limitato/parzialmente soppresso")]
@@ -103,21 +111,46 @@ def append_summary(target_day, detail):
     ritardo_medio = round(statistics.mean(ritardi), 1) if ritardi else ""
     ritardo_mediano = round(statistics.median(ritardi), 1) if ritardi else ""
     ritardo_massimo = max(ritardi) if ritardi else ""
-    puntuali = sum(1 for r in ritardi if r <= 5)
 
-    file_exists = os.path.exists(SUMMARY_PATH)
-    with open(SUMMARY_PATH, "a", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        if not file_exists:
-            w.writerow([
-                "data", "n_treni_osservati", "n_arrivati", "n_non_arrivati",
-                "n_soppressi_o_limitati", "ritardo_medio_min", "ritardo_mediano_min",
-                "ritardo_massimo_min", "treni_puntuali_entro_5min",
-            ])
-        w.writerow([
-            target_day, len(detail), len(arrivati), len(non_arrivati),
-            len(soppressi), ritardo_medio, ritardo_mediano, ritardo_massimo, puntuali,
-        ])
+    n_puntuali = sum(1 for r in ritardi if r < 3)
+    n_lieve = sum(1 for r in ritardi if 3 <= r <= 5)
+    n_alto = sum(1 for r in ritardi if r > 5)
+
+    return {
+        "n_treni_osservati": len(detail),
+        "n_arrivati": len(arrivati),
+        "n_non_arrivati": len(non_arrivati),
+        "n_soppressi_o_limitati": len(soppressi),
+        "n_puntuali_sotto3": n_puntuali,
+        "n_ritardo_3_5": n_lieve,
+        "n_ritardo_oltre5": n_alto,
+        "ritardo_medio_min": ritardo_medio,
+        "ritardo_mediano_min": ritardo_mediano,
+        "ritardo_massimo_min": ritardo_massimo,
+    }
+
+
+def rebuild_summary():
+    """Ricostruisce data/summary.csv da zero leggendo TUTTI i report
+    giornalieri già presenti in data/reports/. Così summary.csv resta
+    sempre coerente con lo storico completo (nessun giorno viene perso),
+    anche se cambia la logica di calcolo delle statistiche in futuro."""
+    if not os.path.isdir(REPORTS_DIR):
+        return
+    giorni = sorted(
+        fn[len("report_"):-4]
+        for fn in os.listdir(REPORTS_DIR)
+        if fn.startswith("report_") and fn.endswith(".csv")
+    )
+    with open(SUMMARY_PATH, "w", newline="", encoding="utf-8") as out:
+        w = csv.writer(out)
+        w.writerow(SUMMARY_HEADER)
+        for giorno in giorni:
+            with open(os.path.join(REPORTS_DIR, f"report_{giorno}.csv"),
+                      newline="", encoding="utf-8") as f:
+                detail = list(csv.DictReader(f))
+            s = stats_for_day_detail(detail)
+            w.writerow([giorno] + [s[k] for k in SUMMARY_HEADER[1:]])
 
 
 def main():
@@ -131,11 +164,12 @@ def main():
 
     detail = build_daily_detail(rows)
     path = write_daily_detail(target_day, detail)
-    append_summary(target_day, detail)
+    rebuild_summary()
     print(f"Report giornaliero scritto in {path} ({len(detail)} treni).")
-    print(f"Riepilogo aggiornato in {SUMMARY_PATH}.")
+    print(f"Riepilogo ricostruito in {SUMMARY_PATH}.")
 
 
 if __name__ == "__main__":
     main()
+
 
