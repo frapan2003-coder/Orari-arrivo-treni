@@ -1,365 +1,369 @@
-poll_timestamp_utc,data_riferimento,numero_treno,categoria,origine,orario_arrivo_previsto,ritardo_minuti_dichiarato,compRitardo,binario_previsto,binario_effettivo,in_stazione,soppresso
-2026-09-28T02:39:13+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T02:51:29+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T03:05:11+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T03:05:11+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T03:22:34+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T03:22:34+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T03:39:58+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T03:39:58+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T03:39:58+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T03:53:10+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,2,,False,False
-2026-09-28T03:53:10+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T03:53:10+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T04:05:21+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,,False,False
-2026-09-28T04:05:21+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T04:05:21+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-28T04:05:21+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T04:23:01+00:00,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,2,True,False
-2026-09-28T04:23:01+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T04:23:01+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T04:23:01+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T04:40:20+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,1,False,False
-2026-09-28T04:40:20+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-28T04:40:20+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-28T04:40:20+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T04:56:49+00:00,2026-09-28,26102,REG,RIVAROLO,06:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,1,True,False
-2026-09-28T04:56:49+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T04:56:49+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,-4,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T04:56:49+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-28T05:07:58+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T05:07:58+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T05:07:58+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-28T05:07:58+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T05:23:51+00:00,2026-09-28,26104,REG,RIVAROLO,07:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,2,True,False
-2026-09-28T05:23:51+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-28T05:23:51+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,,False,False
-2026-09-28T05:23:51+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-28T05:38:42+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,1,False,False
-2026-09-28T05:38:42+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,,False,False
-2026-09-28T05:38:42+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T05:38:42+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T05:50:43+00:00,2026-09-28,26106,REG,RIVAROLO,07:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,1,True,False
-2026-09-28T05:50:43+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T05:50:43+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-28T05:50:43+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,2,,False,False
-2026-09-28T06:05:59+00:00,2026-09-28,26108,REG,RIVAROLO,08:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T06:05:59+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-28T06:05:59+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,2,,False,False
-2026-09-28T06:05:59+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T06:30:01+00:00,2026-09-28,26110,REG,RIVAROLO,08:41,12,ritardo 12 min. / delay 12 min. / Versp&#228;tung 12 Min. / retard de 12 min. / retraso de 12 min. / &icirc;nt&acirc;rziere 12 min. / 遅延 12 分 / 误点 12分钟 / опоздание на 12 минут,1,,False,False
-2026-09-28T06:30:01+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,2,,False,False
-2026-09-28T06:30:01+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T06:30:01+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T06:50:22+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,2,,False,False
-2026-09-28T06:50:22+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T06:50:22+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-28T07:07:15+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,2,,False,False
-2026-09-28T07:07:15+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T07:07:15+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,2,,False,False
-2026-09-28T07:07:15+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T07:25:05+00:00,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,2,1,True,False
-2026-09-28T07:25:05+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T07:25:05+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,,False,False
-2026-09-28T07:25:05+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T07:39:12+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,False,False
-2026-09-28T07:39:12+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,2,,False,False
-2026-09-28T07:39:12+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T07:39:12+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T07:52:35+00:00,2026-09-28,26114,REG,RIVAROLO,09:41,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,2,True,False
-2026-09-28T07:52:35+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T07:52:35+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T08:06:44+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,2,,False,False
-2026-09-28T08:06:44+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-28T08:06:44+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-28T08:06:44+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T08:26:20+00:00,2026-09-28,26116,REG,RIVAROLO,10:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,2,1,True,False
-2026-09-28T08:26:20+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T08:26:20+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,11,ritardo 11 min. / delay 11 min. / Versp&#228;tung 11 Min. / retard de 11 min. / retraso de 11 min. / &icirc;nt&acirc;rziere 11 min. / 遅延 11 分 / 误点 11分钟 / опоздание на 11 минут,,,False,False
-2026-09-28T08:26:20+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T08:40:57+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,2,False,False
-2026-09-28T08:40:57+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T08:40:57+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T08:56:51+00:00,2026-09-28,26118,REG,RIVAROLO,10:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,2,True,False
-2026-09-28T08:56:51+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-28T08:56:51+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T09:10:10+00:00,2026-09-28,26120,REG,RIVAROLO,11:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T09:10:10+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T09:10:10+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T09:33:18+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T09:33:18+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T09:33:18+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T09:49:57+00:00,2026-09-28,26122,REG,TORINO STURA,11:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T09:49:57+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T09:49:57+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T10:00:28+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T10:00:28+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T10:00:28+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T10:23:41+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T10:23:41+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T10:23:41+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T10:38:40+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T10:38:40+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-28T10:38:40+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T10:38:40+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T10:51:54+00:00,2026-09-28,26126,REG,TORINO STURA,12:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,2,True,False
-2026-09-28T10:51:54+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-28T10:51:54+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T10:51:54+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T11:05:04+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-28T11:05:04+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-28T11:05:04+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T11:05:04+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T11:21:30+00:00,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,1,True,False
-2026-09-28T11:21:30+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T11:21:30+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-28T11:21:30+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T11:40:28+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T11:40:28+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T11:40:28+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-28T11:40:28+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T11:56:20+00:00,2026-09-28,26130,REG,RIVAROLO,13:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,2,True,False
-2026-09-28T11:56:20+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-28T11:56:20+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T11:56:20+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-28T12:08:47+00:00,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T12:08:47+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T12:08:47+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T12:08:47+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T12:30:27+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-28T12:30:27+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,,False,False
-2026-09-28T12:30:27+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T12:30:27+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T12:53:23+00:00,2026-09-28,26134,REG,RIVAROLO,14:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,2,True,False
-2026-09-28T12:53:23+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T12:53:23+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-28T12:53:23+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T13:06:05+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T13:06:05+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-28T13:06:05+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T13:06:05+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T13:23:54+00:00,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,1,True,False
-2026-09-28T13:23:54+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T13:23:54+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T13:23:54+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T13:40:18+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,False,False
-2026-09-28T13:40:18+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T13:40:18+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T13:40:18+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-28T13:58:48+00:00,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T13:58:48+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,-2,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-28T13:58:48+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T13:58:48+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,2,,False,False
-2026-09-28T14:14:08+00:00,2026-09-28,26140,REG,RIVAROLO,16:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,1,True,False
-2026-09-28T14:14:08+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,10,ritardo 10 min. / delay 10 min. / Versp&#228;tung 10 Min. / retard de 10 min. / retraso de 10 min. / &icirc;nt&acirc;rziere 10 min. / 遅延 10 分 / 误点 10分钟 / опоздание на 10 минут,1,,False,False
-2026-09-28T14:14:08+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,2,,False,False
-2026-09-28T14:14:08+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T14:33:26+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-28T14:33:26+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,2,,False,False
-2026-09-28T14:33:26+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T14:33:26+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T14:52:10+00:00,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,2,True,False
-2026-09-28T14:52:10+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,,False,False
-2026-09-28T14:52:10+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-28T14:52:10+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T15:07:31+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,2,,False,False
-2026-09-28T15:07:31+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T15:07:31+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T15:07:31+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T15:25:59+00:00,2026-09-28,26144,REG,RIVAROLO,17:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,1,True,False
-2026-09-28T15:25:59+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-28T15:25:59+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-28T15:25:59+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T15:40:34+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T15:40:34+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T15:40:34+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T15:40:34+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T15:58:07+00:00,2026-09-28,26146,REG,RIVAROLO,17:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,2,True,False
-2026-09-28T15:58:07+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T15:58:07+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T15:58:07+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T16:12:29+00:00,2026-09-28,26148,REG,RIVAROLO,18:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,1,False,False
-2026-09-28T16:12:29+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-28T16:12:29+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T16:12:29+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T16:32:17+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T16:32:17+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-28T16:32:17+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T16:32:17+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T16:49:51+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T16:49:51+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T16:49:51+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T16:49:51+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T16:59:51+00:00,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T16:59:51+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T16:59:51+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T16:59:51+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-28T17:14:21+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,1,False,False
-2026-09-28T17:14:21+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T17:14:21+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T17:14:21+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-28T17:29:44+00:00,2026-09-28,26152,REG,RIVAROLO,19:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,1,True,False
-2026-09-28T17:29:44+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-28T17:29:44+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-28T17:29:44+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-28T17:43:29+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T17:43:29+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T17:43:29+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-28T17:43:29+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-28T17:56:02+00:00,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,2,True,False
-2026-09-28T17:56:02+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T17:56:02+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-28T17:56:02+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-28T18:07:48+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,1,False,False
-2026-09-28T18:07:48+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-28T18:07:48+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T18:26:25+00:00,2026-09-28,26156,REG,RIVAROLO,20:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,1,True,False
-2026-09-28T18:26:25+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-28T18:26:25+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-28T18:58:53+00:00,2026-09-28,26158,REG,RIVAROLO,20:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,2,True,False
-2026-09-28T18:58:53+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-28T19:12:39+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,2,False,False
-2026-09-28T19:29:00+00:00,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,2,True,False
-2026-09-29T02:40:34+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T02:55:44+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T03:05:57+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T03:05:57+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T03:22:56+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T03:22:56+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T03:39:42+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T03:39:42+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T03:39:42+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T03:52:34+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,,False,False
-2026-09-29T03:52:34+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T03:52:34+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-29T04:04:36+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-29T04:04:36+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,15,ritardo 15 min. / delay 15 min. / Versp&#228;tung 15 Min. / retard de 15 min. / retraso de 15 min. / &icirc;nt&acirc;rziere 15 min. / 遅延 15 分 / 误点 15分钟 / опоздание на 15 минут,,,False,False
-2026-09-29T04:04:36+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-29T04:04:36+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T04:22:01+00:00,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,2,True,False
-2026-09-29T04:22:01+00:00,2026-09-29,26102,REG,RIVAROLO,06:41,20,ritardo 20 min. / delay 20 min. / Versp&#228;tung 20 Min. / retard de 20 min. / retraso de 20 min. / &icirc;nt&acirc;rziere 20 min. / 遅延 20 分 / 误点 20分钟 / опоздание на 20 минут,,,False,False
-2026-09-29T04:22:01+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-29T04:22:01+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T04:39:02+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-29T04:39:02+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-29T04:39:02+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T04:51:35+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,12,ritardo 12 min. / delay 12 min. / Versp&#228;tung 12 Min. / retard de 12 min. / retraso de 12 min. / &icirc;nt&acirc;rziere 12 min. / 遅延 12 分 / 误点 12分钟 / опоздание на 12 минут,,,False,False
-2026-09-29T04:51:35+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-29T04:51:35+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-29T05:04:46+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,14,ritardo 14 min. / delay 14 min. / Versp&#228;tung 14 Min. / retard de 14 min. / retraso de 14 min. / &icirc;nt&acirc;rziere 14 min. / 遅延 14 分 / 误点 14分钟 / опоздание на 14 минут,,,False,False
-2026-09-29T05:04:46+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-29T05:04:46+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T05:04:46+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T05:21:40+00:00,2026-09-29,26104,REG,RIVAROLO,07:11,14,ritardo 14 min. / delay 14 min. / Versp&#228;tung 14 Min. / retard de 14 min. / retraso de 14 min. / &icirc;nt&acirc;rziere 14 min. / 遅延 14 分 / 误点 14分钟 / опоздание на 14 минут,,,False,False
-2026-09-29T05:21:40+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-29T05:21:40+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,,,False,False
-2026-09-29T05:21:40+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T05:38:37+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-29T05:38:37+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-29T05:38:37+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,,False,False
-2026-09-29T05:38:37+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T05:51:05+00:00,2026-09-29,26106,REG,RIVAROLO,07:41,9,ritardo 9 min. / delay 9 min. / Versp&#228;tung 9 Min. / retard de 9 min. / retraso de 9 min. / &icirc;nt&acirc;rziere 9 min. / 遅延 9 分 / 误点 9分钟 / опоздание на 9 минут,1,1,True,False
-2026-09-29T05:51:05+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-29T05:51:05+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-29T05:51:05+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-29T06:06:03+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-29T06:06:03+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-29T06:06:03+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,2,,False,False
-2026-09-29T06:06:03+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T06:27:46+00:00,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,2,True,False
-2026-09-29T06:27:46+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-29T06:27:46+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-29T06:27:46+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T06:46:19+00:00,2026-09-29,26110,REG,RIVAROLO,08:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,1,True,False
-2026-09-29T06:46:19+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,2,,False,False
-2026-09-29T06:46:19+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-29T06:46:19+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T07:22:56+00:00,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,2,True,False
-2026-09-29T07:22:56+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,1,,False,False
-2026-09-29T07:22:56+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,2,,False,False
-2026-09-29T07:22:56+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T07:38:46+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-29T07:38:46+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,2,,False,False
-2026-09-29T07:38:46+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-29T07:38:46+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T07:52:13+00:00,2026-09-29,26114,REG,RIVAROLO,09:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,1,True,False
-2026-09-29T07:52:13+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,2,,False,False
-2026-09-29T07:52:13+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,11,ritardo 11 min. / delay 11 min. / Versp&#228;tung 11 Min. / retard de 11 min. / retraso de 11 min. / &icirc;nt&acirc;rziere 11 min. / 遅延 11 分 / 误点 11分钟 / опоздание на 11 минут,1,,False,False
-2026-09-29T07:52:13+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-29T08:06:48+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,2,,False,False
-2026-09-29T08:06:48+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,1,,False,False
-2026-09-29T08:06:48+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-29T08:06:48+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T08:25:29+00:00,2026-09-29,26116,REG,RIVAROLO,10:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,2,2,True,False
-2026-09-29T08:25:29+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-29T08:25:29+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-29T08:25:29+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T08:40:30+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,1,False,False
-2026-09-29T08:40:30+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-29T08:40:30+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T08:57:21+00:00,2026-09-29,26118,REG,RIVAROLO,10:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,1,True,False
-2026-09-29T08:57:21+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-29T08:57:21+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T09:10:55+00:00,2026-09-29,26120,REG,RIVAROLO,11:11,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,,,False,False
-2026-09-29T09:10:55+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-29T09:10:55+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T09:32:24+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T09:32:24+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T09:32:24+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T09:50:33+00:00,2026-09-29,26122,REG,TORINO STURA,11:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,1,True,False
-2026-09-29T09:50:33+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T09:50:33+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T10:05:33+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T10:05:33+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T10:05:33+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T10:23:03+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-29T10:23:03+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
-2026-09-29T10:23:03+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T10:39:53+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,1,False,False
-2026-09-29T10:39:53+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,2,,False,False
-2026-09-29T10:39:53+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T10:39:53+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T10:53:32+00:00,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,1,True,False
-2026-09-29T10:53:32+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,2,,False,False
-2026-09-29T10:53:32+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,-3,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-29T10:53:32+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T11:05:05+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,10,ritardo 10 min. / delay 10 min. / Versp&#228;tung 10 Min. / retard de 10 min. / retraso de 10 min. / &icirc;nt&acirc;rziere 10 min. / 遅延 10 分 / 误点 10分钟 / опоздание на 10 минут,2,,False,False
-2026-09-29T11:05:05+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,1,,False,False
-2026-09-29T11:05:05+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T11:05:05+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T11:21:26+00:00,2026-09-29,26128,REG,TORINO STURA,13:11,9,ritardo 9 min. / delay 9 min. / Versp&#228;tung 9 Min. / retard de 9 min. / retraso de 9 min. / &icirc;nt&acirc;rziere 9 min. / 遅延 9 分 / 误点 9分钟 / опоздание на 9 минут,2,2,True,False
-2026-09-29T11:21:26+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T11:21:26+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T11:21:26+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T11:38:01+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T11:38:01+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-29T11:38:01+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T11:38:01+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T11:51:15+00:00,2026-09-29,26130,REG,RIVAROLO,13:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,1,True,False
-2026-09-29T11:51:15+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T11:51:15+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-29T11:51:15+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,,,False,False
-2026-09-29T12:06:18+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-29T12:06:18+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T12:06:18+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,,,False,False
-2026-09-29T12:06:18+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T12:29:29+00:00,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,2,True,False
-2026-09-29T12:29:29+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min. / delay 2 min. / Versp&#228;tung 2 Min. / retard de 2 min. / retraso de 2 min. / &icirc;nt&acirc;rziere 2 min. / 遅延 2 分 / 误点 2分钟 / опоздание на 2 минут,1,,False,False
-2026-09-29T12:29:29+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,,,False,False
-2026-09-29T12:29:29+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T12:49:26+00:00,2026-09-29,26134,REG,RIVAROLO,14:41,4,ritardo 4 min. / delay 4 min. / Versp&#228;tung 4 Min. / retard de 4 min. / retraso de 4 min. / &icirc;nt&acirc;rziere 4 min. / 遅延 4 分 / 误点 4分钟 / опоздание на 4 минут,1,1,True,False
-2026-09-29T12:49:26+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,-1,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,,False,False
-2026-09-29T12:49:26+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,6,ritardo 6 min. / delay 6 min. / Versp&#228;tung 6 Min. / retard de 6 min. / retraso de 6 min. / &icirc;nt&acirc;rziere 6 min. / 遅延 6 分 / 误点 6分钟 / опоздание на 6 минут,1,,False,False
-2026-09-29T12:49:26+00:00,2026-09-29,26140,REG,RIVAROLO,16:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,,,False,False
-2026-09-29T13:03:41+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T13:03:41+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-29T13:03:41+00:00,2026-09-29,26140,REG,RIVAROLO,16:11,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,,,False,False
-2026-09-29T13:03:41+00:00,2026-09-29,26142,REG,RIVAROLO,16:41,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,1,,False,False
-2026-09-29T13:25:54+00:00,2026-09-29,26136,REG,RIVAROLO,15:11,0,in orario / on time / p&#252;nktlich / &agrave; l'heure / en horario / conform orarului / 定刻 / 按时 / по расписанию,,2,True,False
-2026-09-29T13:25:54+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,,False,False
-2026-09-29T13:25:54+00:00,2026-09-29,26140,REG,RIVAROLO,16:11,8,ritardo 8 min. / delay 8 min. / Versp&#228;tung 8 Min. / retard de 8 min. / retraso de 8 min. / &icirc;nt&acirc;rziere 8 min. / 遅延 8 分 / 误点 8分钟 / опоздание на 8 минут,,,False,False
-2026-09-29T13:25:54+00:00,2026-09-29,26142,REG,RIVAROLO,16:41,3,ritardo 3 min. / delay 3 min. / Versp&#228;tung 3 Min. / retard de 3 min. / retraso de 3 min. / &icirc;nt&acirc;rziere 3 min. / 遅延 3 分 / 误点 3分钟 / опоздание на 3 минут,1,,False,False
-2026-09-29T13:41:50+00:00,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min. / delay 1 min. / Versp&#228;tung 1 Min. / retard de 1 min. / retraso de 1 min. / &icirc;nt&acirc;rziere 1 min. / 遅延 1 分 / 误点 1分钟 / опоздание на 1 минут,1,1,True,False
-2026-09-29T13:41:50+00:00,2026-09-29,26140,REG,RIVAROLO,16:11,7,ritardo 7 min. / delay 7 min. / Versp&#228;tung 7 Min. / retard de 7 min. / retraso de 7 min. / &icirc;nt&acirc;rziere 7 min. / 遅延 7 分 / 误点 7分钟 / опоздание на 7 минут,,,False,False
-2026-09-29T13:41:50+00:00,2026-09-29,26142,REG,RIVAROLO,16:41,5,ritardo 5 min. / delay 5 min. / Versp&#228;tung 5 Min. / retard de 5 min. / retraso de 5 min. / &icirc;nt&acirc;rziere 5 min. / 遅延 5 分 / 误点 5分钟 / опоздание на 5 минут,1,,False,False
-2026-09-29T13:41:50+00:00,2026-09-29,26144,REG,RIVAROLO,17:11,0,non partito / not departed / keine Partei / pas encore partit / no sali&oacute; / nu a plecat / 未発車 / 未出发 / не отправленный,2,,False,False
+rilevamento_locale,data_riferimento,numero_treno,categoria,origine,orario_arrivo_previsto,ritardo_minuti,ritardo_testo,binario_previsto,binario_effettivo,in_stazione,provvedimento_codice,provvedimento_descrizione
+2026-09-28 04:39:13,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-28 04:51:29,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-28 05:05:11,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-28 05:05:11,2026-09-28,26102,REG,RIVAROLO,06:41,0,non partito,,,False,0,
+2026-09-28 05:22:34,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-28 05:22:34,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-28 05:39:58,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-28 05:39:58,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-28 05:39:58,2026-09-28,26104,REG,RIVAROLO,07:11,0,non partito,,,False,0,
+2026-09-28 05:53:10,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,2,ritardo 2 min.,2,,False,0,
+2026-09-28 05:53:10,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-28 05:53:10,2026-09-28,26104,REG,RIVAROLO,07:11,1,ritardo 1 min.,,,False,0,
+2026-09-28 06:05:21,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,3,ritardo 3 min.,2,,False,0,
+2026-09-28 06:05:21,2026-09-28,26102,REG,RIVAROLO,06:41,2,ritardo 2 min.,,,False,0,
+2026-09-28 06:05:21,2026-09-28,26104,REG,RIVAROLO,07:11,-1,in orario,,,False,0,
+2026-09-28 06:05:21,2026-09-28,26106,REG,RIVAROLO,07:41,0,non partito,1,,False,0,
+2026-09-28 06:23:01,2026-09-28,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min.,2,2,True,0,
+2026-09-28 06:23:01,2026-09-28,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-28 06:23:01,2026-09-28,26104,REG,RIVAROLO,07:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 06:23:01,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 06:40:20,2026-09-28,26102,REG,RIVAROLO,06:41,4,ritardo 4 min.,,1,False,0,
+2026-09-28 06:40:20,2026-09-28,26104,REG,RIVAROLO,07:11,3,ritardo 3 min.,,,False,0,
+2026-09-28 06:40:20,2026-09-28,26106,REG,RIVAROLO,07:41,3,ritardo 3 min.,1,,False,0,
+2026-09-28 06:40:20,2026-09-28,26108,REG,RIVAROLO,08:11,0,non partito,,,False,0,
+2026-09-28 06:56:49,2026-09-28,26102,REG,RIVAROLO,06:41,3,ritardo 3 min.,,1,True,0,
+2026-09-28 06:56:49,2026-09-28,26104,REG,RIVAROLO,07:11,1,ritardo 1 min.,,,False,0,
+2026-09-28 06:56:49,2026-09-28,26106,REG,RIVAROLO,07:41,-4,in orario,1,,False,0,
+2026-09-28 06:56:49,2026-09-28,26108,REG,RIVAROLO,08:11,3,ritardo 3 min.,,,False,0,
+2026-09-28 07:07:58,2026-09-28,26104,REG,RIVAROLO,07:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 07:07:58,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 07:07:58,2026-09-28,26108,REG,RIVAROLO,08:11,0,in orario,,,False,0,
+2026-09-28 07:07:58,2026-09-28,26110,REG,RIVAROLO,08:41,0,non partito,1,,False,0,
+2026-09-28 07:23:51,2026-09-28,26104,REG,RIVAROLO,07:11,4,ritardo 4 min.,,2,True,0,
+2026-09-28 07:23:51,2026-09-28,26106,REG,RIVAROLO,07:41,3,ritardo 3 min.,1,,False,0,
+2026-09-28 07:23:51,2026-09-28,26108,REG,RIVAROLO,08:11,4,ritardo 4 min.,,,False,0,
+2026-09-28 07:23:51,2026-09-28,26110,REG,RIVAROLO,08:41,3,ritardo 3 min.,1,,False,0,
+2026-09-28 07:38:42,2026-09-28,26106,REG,RIVAROLO,07:41,1,ritardo 1 min.,1,1,False,0,
+2026-09-28 07:38:42,2026-09-28,26108,REG,RIVAROLO,08:11,4,ritardo 4 min.,,,False,0,
+2026-09-28 07:38:42,2026-09-28,26110,REG,RIVAROLO,08:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 07:38:42,2026-09-28,26112,REG,RIVAROLO,09:11,0,non partito,2,,False,0,
+2026-09-28 07:50:43,2026-09-28,26106,REG,RIVAROLO,07:41,0,in orario,1,1,True,0,
+2026-09-28 07:50:43,2026-09-28,26108,REG,RIVAROLO,08:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 07:50:43,2026-09-28,26110,REG,RIVAROLO,08:41,8,ritardo 8 min.,1,,False,0,
+2026-09-28 07:50:43,2026-09-28,26112,REG,RIVAROLO,09:11,2,ritardo 2 min.,2,,False,0,
+2026-09-28 08:05:59,2026-09-28,26108,REG,RIVAROLO,08:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 08:05:59,2026-09-28,26110,REG,RIVAROLO,08:41,8,ritardo 8 min.,1,,False,0,
+2026-09-28 08:05:59,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min.,2,,False,0,
+2026-09-28 08:05:59,2026-09-28,26114,REG,RIVAROLO,09:41,0,non partito,1,,False,0,
+2026-09-28 08:30:01,2026-09-28,26110,REG,RIVAROLO,08:41,12,ritardo 12 min.,1,,False,0,
+2026-09-28 08:30:01,2026-09-28,26112,REG,RIVAROLO,09:11,8,ritardo 8 min.,2,,False,0,
+2026-09-28 08:30:01,2026-09-28,26114,REG,RIVAROLO,09:41,0,in orario,1,,False,0,
+2026-09-28 08:30:01,2026-09-28,26116,REG,RIVAROLO,10:11,0,non partito,2,,False,0,
+2026-09-28 08:50:22,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min.,2,,False,0,
+2026-09-28 08:50:22,2026-09-28,26114,REG,RIVAROLO,09:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 08:50:22,2026-09-28,26116,REG,RIVAROLO,10:11,1,ritardo 1 min.,2,,False,0,
+2026-09-28 09:07:15,2026-09-28,26112,REG,RIVAROLO,09:11,6,ritardo 6 min.,2,,False,0,
+2026-09-28 09:07:15,2026-09-28,26114,REG,RIVAROLO,09:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 09:07:15,2026-09-28,26116,REG,RIVAROLO,10:11,4,ritardo 4 min.,2,,False,0,
+2026-09-28 09:07:15,2026-09-28,26118,REG,RIVAROLO,10:41,0,non partito,1,,False,0,
+2026-09-28 09:25:05,2026-09-28,26112,REG,RIVAROLO,09:11,7,ritardo 7 min.,2,1,True,0,
+2026-09-28 09:25:05,2026-09-28,26114,REG,RIVAROLO,09:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 09:25:05,2026-09-28,26116,REG,RIVAROLO,10:11,3,ritardo 3 min.,2,,False,0,
+2026-09-28 09:25:05,2026-09-28,26118,REG,RIVAROLO,10:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 09:39:12,2026-09-28,26114,REG,RIVAROLO,09:41,1,ritardo 1 min.,1,2,False,0,
+2026-09-28 09:39:12,2026-09-28,26116,REG,RIVAROLO,10:11,4,ritardo 4 min.,2,,False,0,
+2026-09-28 09:39:12,2026-09-28,26118,REG,RIVAROLO,10:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 09:39:12,2026-09-28,26120,REG,RIVAROLO,11:11,0,non partito,,,False,0,
+2026-09-28 09:52:35,2026-09-28,26114,REG,RIVAROLO,09:41,-1,in orario,1,2,True,0,
+2026-09-28 09:52:35,2026-09-28,26118,REG,RIVAROLO,10:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 09:52:35,2026-09-28,26120,REG,RIVAROLO,11:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 10:06:44,2026-09-28,26116,REG,RIVAROLO,10:11,5,ritardo 5 min.,2,,False,0,
+2026-09-28 10:06:44,2026-09-28,26118,REG,RIVAROLO,10:41,6,ritardo 6 min.,1,,False,0,
+2026-09-28 10:06:44,2026-09-28,26120,REG,RIVAROLO,11:11,8,ritardo 8 min.,,,False,0,
+2026-09-28 10:06:44,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-28 10:26:20,2026-09-28,26116,REG,RIVAROLO,10:11,6,ritardo 6 min.,2,1,True,0,
+2026-09-28 10:26:20,2026-09-28,26118,REG,RIVAROLO,10:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 10:26:20,2026-09-28,26120,REG,RIVAROLO,11:11,11,ritardo 11 min.,,,False,0,
+2026-09-28 10:26:20,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-28 10:40:57,2026-09-28,26118,REG,RIVAROLO,10:41,5,ritardo 5 min.,1,2,False,0,
+2026-09-28 10:40:57,2026-09-28,26120,REG,RIVAROLO,11:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 10:40:57,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-28 10:56:51,2026-09-28,26118,REG,RIVAROLO,10:41,4,ritardo 4 min.,1,2,True,0,
+2026-09-28 10:56:51,2026-09-28,26120,REG,RIVAROLO,11:11,8,ritardo 8 min.,,,False,0,
+2026-09-28 10:56:51,2026-09-28,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-28 11:10:10,2026-09-28,26120,REG,RIVAROLO,11:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 11:10:10,2026-09-28,26122,REG,TORINO STURA,11:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 11:10:10,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-28 11:33:18,2026-09-28,26122,REG,TORINO STURA,11:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 11:33:18,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-28 11:33:18,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-28 11:49:57,2026-09-28,26122,REG,TORINO STURA,11:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 11:49:57,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-28 11:49:57,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-28 12:00:28,2026-09-28,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-28 12:00:28,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-28 12:00:28,2026-09-28,26130,REG,RIVAROLO,13:41,0,non partito,1,,False,0,
+2026-09-28 12:23:41,2026-09-28,26126,REG,TORINO STURA,12:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 12:23:41,2026-09-28,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-28 12:23:41,2026-09-28,26130,REG,RIVAROLO,13:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 12:38:40,2026-09-28,26126,REG,TORINO STURA,12:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 12:38:40,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min.,2,,False,0,
+2026-09-28 12:38:40,2026-09-28,26130,REG,RIVAROLO,13:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 12:38:40,2026-09-28,26132,REG,RIVAROLO,14:11,0,non partito,,,False,0,
+2026-09-28 12:51:54,2026-09-28,26126,REG,TORINO STURA,12:41,3,ritardo 3 min.,1,2,True,0,
+2026-09-28 12:51:54,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min.,2,,False,0,
+2026-09-28 12:51:54,2026-09-28,26130,REG,RIVAROLO,13:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 12:51:54,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 13:05:04,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min.,2,,False,0,
+2026-09-28 13:05:04,2026-09-28,26130,REG,RIVAROLO,13:41,3,ritardo 3 min.,1,,False,0,
+2026-09-28 13:05:04,2026-09-28,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,,False,0,
+2026-09-28 13:05:04,2026-09-28,26134,REG,RIVAROLO,14:41,0,non partito,1,,False,0,
+2026-09-28 13:21:30,2026-09-28,26128,REG,TORINO STURA,13:11,1,ritardo 1 min.,2,1,True,0,
+2026-09-28 13:21:30,2026-09-28,26130,REG,RIVAROLO,13:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 13:21:30,2026-09-28,26132,REG,RIVAROLO,14:11,3,ritardo 3 min.,,,False,0,
+2026-09-28 13:21:30,2026-09-28,26134,REG,RIVAROLO,14:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 13:40:28,2026-09-28,26130,REG,RIVAROLO,13:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 13:40:28,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 13:40:28,2026-09-28,26134,REG,RIVAROLO,14:41,3,ritardo 3 min.,1,,False,0,
+2026-09-28 13:40:28,2026-09-28,26136,REG,RIVAROLO,15:11,0,non partito,,,False,0,
+2026-09-28 13:56:20,2026-09-28,26130,REG,RIVAROLO,13:41,3,ritardo 3 min.,1,2,True,0,
+2026-09-28 13:56:20,2026-09-28,26132,REG,RIVAROLO,14:11,-1,in orario,,,False,0,
+2026-09-28 13:56:20,2026-09-28,26134,REG,RIVAROLO,14:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 13:56:20,2026-09-28,26136,REG,RIVAROLO,15:11,3,ritardo 3 min.,,,False,0,
+2026-09-28 14:08:47,2026-09-28,26132,REG,RIVAROLO,14:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 14:08:47,2026-09-28,26134,REG,RIVAROLO,14:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 14:08:47,2026-09-28,26136,REG,RIVAROLO,15:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 14:08:47,2026-09-28,26138,REG,RIVAROLO,15:41,0,non partito,1,,False,0,
+2026-09-28 14:30:27,2026-09-28,26134,REG,RIVAROLO,14:41,8,ritardo 8 min.,1,,False,0,
+2026-09-28 14:30:27,2026-09-28,26136,REG,RIVAROLO,15:11,4,ritardo 4 min.,,,False,0,
+2026-09-28 14:30:27,2026-09-28,26138,REG,RIVAROLO,15:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 14:30:27,2026-09-28,26140,REG,RIVAROLO,16:11,0,non partito,,,False,0,
+2026-09-28 14:53:23,2026-09-28,26134,REG,RIVAROLO,14:41,6,ritardo 6 min.,1,2,True,0,
+2026-09-28 14:53:23,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 14:53:23,2026-09-28,26138,REG,RIVAROLO,15:41,8,ritardo 8 min.,1,,False,0,
+2026-09-28 14:53:23,2026-09-28,26140,REG,RIVAROLO,16:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 15:06:05,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 15:06:05,2026-09-28,26138,REG,RIVAROLO,15:41,6,ritardo 6 min.,1,,False,0,
+2026-09-28 15:06:05,2026-09-28,26140,REG,RIVAROLO,16:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 15:06:05,2026-09-28,26142,REG,RIVAROLO,16:41,0,non partito,1,,False,0,
+2026-09-28 15:23:54,2026-09-28,26136,REG,RIVAROLO,15:11,2,ritardo 2 min.,,1,True,0,
+2026-09-28 15:23:54,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 15:23:54,2026-09-28,26140,REG,RIVAROLO,16:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 15:23:54,2026-09-28,26142,REG,RIVAROLO,16:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 15:40:18,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,2,False,0,
+2026-09-28 15:40:18,2026-09-28,26140,REG,RIVAROLO,16:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 15:40:18,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 15:40:18,2026-09-28,26144,REG,RIVAROLO,17:11,0,non partito,2,,False,0,
+2026-09-28 15:58:48,2026-09-28,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 15:58:48,2026-09-28,26140,REG,RIVAROLO,16:11,-2,in orario,,,False,0,
+2026-09-28 15:58:48,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 15:58:48,2026-09-28,26144,REG,RIVAROLO,17:11,-1,in orario,2,,False,0,
+2026-09-28 16:14:08,2026-09-28,26140,REG,RIVAROLO,16:11,3,ritardo 3 min.,,1,True,0,
+2026-09-28 16:14:08,2026-09-28,26142,REG,RIVAROLO,16:41,10,ritardo 10 min.,1,,False,0,
+2026-09-28 16:14:08,2026-09-28,26144,REG,RIVAROLO,17:11,6,ritardo 6 min.,2,,False,0,
+2026-09-28 16:14:08,2026-09-28,26146,REG,RIVAROLO,17:41,0,non partito,1,,False,0,
+2026-09-28 16:33:26,2026-09-28,26142,REG,RIVAROLO,16:41,8,ritardo 8 min.,1,,False,0,
+2026-09-28 16:33:26,2026-09-28,26144,REG,RIVAROLO,17:11,5,ritardo 5 min.,2,,False,0,
+2026-09-28 16:33:26,2026-09-28,26146,REG,RIVAROLO,17:41,0,in orario,1,,False,0,
+2026-09-28 16:33:26,2026-09-28,26148,REG,RIVAROLO,18:11,0,non partito,,,False,0,
+2026-09-28 16:52:10,2026-09-28,26142,REG,RIVAROLO,16:41,7,ritardo 7 min.,1,2,True,0,
+2026-09-28 16:52:10,2026-09-28,26144,REG,RIVAROLO,17:11,3,ritardo 3 min.,2,,False,0,
+2026-09-28 16:52:10,2026-09-28,26146,REG,RIVAROLO,17:41,7,ritardo 7 min.,1,,False,0,
+2026-09-28 16:52:10,2026-09-28,26148,REG,RIVAROLO,18:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 17:07:31,2026-09-28,26144,REG,RIVAROLO,17:11,4,ritardo 4 min.,2,,False,0,
+2026-09-28 17:07:31,2026-09-28,26146,REG,RIVAROLO,17:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 17:07:31,2026-09-28,26148,REG,RIVAROLO,18:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 17:07:31,2026-09-28,26150,REG,RIVAROLO,18:41,0,non partito,1,,False,0,
+2026-09-28 17:25:59,2026-09-28,26144,REG,RIVAROLO,17:11,3,ritardo 3 min.,2,1,True,0,
+2026-09-28 17:25:59,2026-09-28,26146,REG,RIVAROLO,17:41,6,ritardo 6 min.,1,,False,0,
+2026-09-28 17:25:59,2026-09-28,26148,REG,RIVAROLO,18:11,7,ritardo 7 min.,,,False,0,
+2026-09-28 17:25:59,2026-09-28,26150,REG,RIVAROLO,18:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 17:40:34,2026-09-28,26146,REG,RIVAROLO,17:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 17:40:34,2026-09-28,26148,REG,RIVAROLO,18:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 17:40:34,2026-09-28,26150,REG,RIVAROLO,18:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 17:40:34,2026-09-28,26152,REG,RIVAROLO,19:11,0,non partito,,,False,0,
+2026-09-28 17:58:07,2026-09-28,26146,REG,RIVAROLO,17:41,5,ritardo 5 min.,1,2,True,0,
+2026-09-28 17:58:07,2026-09-28,26148,REG,RIVAROLO,18:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 17:58:07,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 17:58:07,2026-09-28,26152,REG,RIVAROLO,19:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 18:12:29,2026-09-28,26148,REG,RIVAROLO,18:11,7,ritardo 7 min.,,1,False,0,
+2026-09-28 18:12:29,2026-09-28,26150,REG,RIVAROLO,18:41,4,ritardo 4 min.,1,,False,0,
+2026-09-28 18:12:29,2026-09-28,26152,REG,RIVAROLO,19:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 18:12:29,2026-09-28,26154,REG,RIVAROLO,19:41,0,non partito,1,,False,0,
+2026-09-28 18:32:17,2026-09-28,26150,REG,RIVAROLO,18:41,-1,in orario,1,,False,0,
+2026-09-28 18:32:17,2026-09-28,26152,REG,RIVAROLO,19:11,3,ritardo 3 min.,,,False,0,
+2026-09-28 18:32:17,2026-09-28,26154,REG,RIVAROLO,19:41,0,in orario,1,,False,0,
+2026-09-28 18:32:17,2026-09-28,26156,REG,RIVAROLO,20:11,0,non partito,,,False,0,
+2026-09-28 18:49:51,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 18:49:51,2026-09-28,26152,REG,RIVAROLO,19:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 18:49:51,2026-09-28,26154,REG,RIVAROLO,19:41,5,ritardo 5 min.,1,,False,0,
+2026-09-28 18:49:51,2026-09-28,26156,REG,RIVAROLO,20:11,2,ritardo 2 min.,,,False,0,
+2026-09-28 18:59:51,2026-09-28,26150,REG,RIVAROLO,18:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 18:59:51,2026-09-28,26152,REG,RIVAROLO,19:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 18:59:51,2026-09-28,26154,REG,RIVAROLO,19:41,2,ritardo 2 min.,1,,False,0,
+2026-09-28 18:59:51,2026-09-28,26156,REG,RIVAROLO,20:11,1,ritardo 1 min.,,,False,0,
+2026-09-28 19:14:21,2026-09-28,26152,REG,RIVAROLO,19:11,4,ritardo 4 min.,,1,False,0,
+2026-09-28 19:14:21,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min.,1,,False,0,
+2026-09-28 19:14:21,2026-09-28,26156,REG,RIVAROLO,20:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 19:14:21,2026-09-28,26158,REG,RIVAROLO,20:41,0,non partito,,,False,0,
+2026-09-28 19:29:44,2026-09-28,26152,REG,RIVAROLO,19:11,3,ritardo 3 min.,,1,True,0,
+2026-09-28 19:29:44,2026-09-28,26154,REG,RIVAROLO,19:41,-1,in orario,1,,False,0,
+2026-09-28 19:29:44,2026-09-28,26156,REG,RIVAROLO,20:11,8,ritardo 8 min.,,,False,0,
+2026-09-28 19:29:44,2026-09-28,26158,REG,RIVAROLO,20:41,2,ritardo 2 min.,,,False,0,
+2026-09-28 19:43:29,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 19:43:29,2026-09-28,26156,REG,RIVAROLO,20:11,6,ritardo 6 min.,,,False,0,
+2026-09-28 19:43:29,2026-09-28,26158,REG,RIVAROLO,20:41,6,ritardo 6 min.,,,False,0,
+2026-09-28 19:43:29,2026-09-28,26160,REG,RIVAROLO,21:11,0,non partito,1,,False,0,
+2026-09-28 19:56:02,2026-09-28,26154,REG,RIVAROLO,19:41,1,ritardo 1 min.,1,2,True,0,
+2026-09-28 19:56:02,2026-09-28,26156,REG,RIVAROLO,20:11,5,ritardo 5 min.,,,False,0,
+2026-09-28 19:56:02,2026-09-28,26158,REG,RIVAROLO,20:41,8,ritardo 8 min.,,,False,0,
+2026-09-28 19:56:02,2026-09-28,26160,REG,RIVAROLO,21:11,2,ritardo 2 min.,1,,False,0,
+2026-09-28 20:07:48,2026-09-28,26156,REG,RIVAROLO,20:11,3,ritardo 3 min.,,1,False,0,
+2026-09-28 20:07:48,2026-09-28,26158,REG,RIVAROLO,20:41,8,ritardo 8 min.,,,False,0,
+2026-09-28 20:07:48,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min.,1,,False,0,
+2026-09-28 20:26:25,2026-09-28,26156,REG,RIVAROLO,20:11,2,ritardo 2 min.,,1,True,0,
+2026-09-28 20:26:25,2026-09-28,26158,REG,RIVAROLO,20:41,5,ritardo 5 min.,,,False,0,
+2026-09-28 20:26:25,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min.,1,,False,0,
+2026-09-28 20:58:53,2026-09-28,26158,REG,RIVAROLO,20:41,5,ritardo 5 min.,,2,True,0,
+2026-09-28 20:58:53,2026-09-28,26160,REG,RIVAROLO,21:11,1,ritardo 1 min.,1,,False,0,
+2026-09-28 21:12:39,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min.,1,2,False,0,
+2026-09-28 21:29:00,2026-09-28,26160,REG,RIVAROLO,21:11,5,ritardo 5 min.,1,2,True,0,
+2026-09-29 04:40:34,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-29 04:55:44,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-29 05:05:57,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-29 05:05:57,2026-09-29,26102,REG,RIVAROLO,06:41,0,non partito,,,False,0,
+2026-09-29 05:22:56,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-29 05:22:56,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-29 05:39:42,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-29 05:39:42,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-29 05:39:42,2026-09-29,26104,REG,RIVAROLO,07:11,0,non partito,,,False,0,
+2026-09-29 05:52:34,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,3,ritardo 3 min.,2,,False,0,
+2026-09-29 05:52:34,2026-09-29,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-29 05:52:34,2026-09-29,26104,REG,RIVAROLO,07:11,2,ritardo 2 min.,,,False,0,
+2026-09-29 06:04:36,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min.,2,,False,0,
+2026-09-29 06:04:36,2026-09-29,26102,REG,RIVAROLO,06:41,15,ritardo 15 min.,,,False,0,
+2026-09-29 06:04:36,2026-09-29,26104,REG,RIVAROLO,07:11,3,ritardo 3 min.,,,False,0,
+2026-09-29 06:04:36,2026-09-29,26106,REG,RIVAROLO,07:41,0,non partito,1,,False,0,
+2026-09-29 06:22:01,2026-09-29,26101,REG,TORINO LINGOTTO,06:11,1,ritardo 1 min.,2,2,True,0,
+2026-09-29 06:22:01,2026-09-29,26102,REG,RIVAROLO,06:41,20,ritardo 20 min.,,,False,0,
+2026-09-29 06:22:01,2026-09-29,26104,REG,RIVAROLO,07:11,5,ritardo 5 min.,,,False,0,
+2026-09-29 06:22:01,2026-09-29,26106,REG,RIVAROLO,07:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 06:39:02,2026-09-29,26104,REG,RIVAROLO,07:11,8,ritardo 8 min.,,,False,0,
+2026-09-29 06:39:02,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min.,1,,False,0,
+2026-09-29 06:39:02,2026-09-29,26108,REG,RIVAROLO,08:11,0,non partito,,,False,0,
+2026-09-29 06:51:35,2026-09-29,26104,REG,RIVAROLO,07:11,12,ritardo 12 min.,,,False,0,
+2026-09-29 06:51:35,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min.,1,,False,0,
+2026-09-29 06:51:35,2026-09-29,26108,REG,RIVAROLO,08:11,2,ritardo 2 min.,,,False,0,
+2026-09-29 07:04:46,2026-09-29,26104,REG,RIVAROLO,07:11,14,ritardo 14 min.,,,False,0,
+2026-09-29 07:04:46,2026-09-29,26106,REG,RIVAROLO,07:41,7,ritardo 7 min.,1,,False,0,
+2026-09-29 07:04:46,2026-09-29,26108,REG,RIVAROLO,08:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 07:04:46,2026-09-29,26110,REG,RIVAROLO,08:41,0,non partito,1,,False,0,
+2026-09-29 07:21:40,2026-09-29,26104,REG,RIVAROLO,07:11,14,ritardo 14 min.,,,False,0,
+2026-09-29 07:21:40,2026-09-29,26106,REG,RIVAROLO,07:41,7,ritardo 7 min.,1,,False,0,
+2026-09-29 07:21:40,2026-09-29,26108,REG,RIVAROLO,08:11,4,ritardo 4 min.,,,False,0,
+2026-09-29 07:21:40,2026-09-29,26110,REG,RIVAROLO,08:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 07:38:37,2026-09-29,26106,REG,RIVAROLO,07:41,8,ritardo 8 min.,1,,False,0,
+2026-09-29 07:38:37,2026-09-29,26108,REG,RIVAROLO,08:11,5,ritardo 5 min.,,,False,0,
+2026-09-29 07:38:37,2026-09-29,26110,REG,RIVAROLO,08:41,4,ritardo 4 min.,1,,False,0,
+2026-09-29 07:38:37,2026-09-29,26112,REG,RIVAROLO,09:11,0,non partito,2,,False,0,
+2026-09-29 07:51:05,2026-09-29,26106,REG,RIVAROLO,07:41,9,ritardo 9 min.,1,1,True,0,
+2026-09-29 07:51:05,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min.,,,False,0,
+2026-09-29 07:51:05,2026-09-29,26110,REG,RIVAROLO,08:41,6,ritardo 6 min.,1,,False,0,
+2026-09-29 07:51:05,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min.,2,,False,0,
+2026-09-29 08:06:03,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min.,,,False,0,
+2026-09-29 08:06:03,2026-09-29,26110,REG,RIVAROLO,08:41,3,ritardo 3 min.,1,,False,0,
+2026-09-29 08:06:03,2026-09-29,26112,REG,RIVAROLO,09:11,5,ritardo 5 min.,2,,False,0,
+2026-09-29 08:06:03,2026-09-29,26114,REG,RIVAROLO,09:41,0,non partito,1,,False,0,
+2026-09-29 08:27:46,2026-09-29,26108,REG,RIVAROLO,08:11,6,ritardo 6 min.,,2,True,0,
+2026-09-29 08:27:46,2026-09-29,26110,REG,RIVAROLO,08:41,3,ritardo 3 min.,1,,False,0,
+2026-09-29 08:27:46,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min.,2,,False,0,
+2026-09-29 08:27:46,2026-09-29,26114,REG,RIVAROLO,09:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 08:46:19,2026-09-29,26110,REG,RIVAROLO,08:41,4,ritardo 4 min.,1,1,True,0,
+2026-09-29 08:46:19,2026-09-29,26112,REG,RIVAROLO,09:11,2,ritardo 2 min.,2,,False,0,
+2026-09-29 08:46:19,2026-09-29,26114,REG,RIVAROLO,09:41,3,ritardo 3 min.,1,,False,0,
+2026-09-29 08:46:19,2026-09-29,26116,REG,RIVAROLO,10:11,0,non partito,2,,False,0,
+2026-09-29 09:22:56,2026-09-29,26112,REG,RIVAROLO,09:11,1,ritardo 1 min.,2,2,True,0,
+2026-09-29 09:22:56,2026-09-29,26114,REG,RIVAROLO,09:41,8,ritardo 8 min.,1,,False,0,
+2026-09-29 09:22:56,2026-09-29,26116,REG,RIVAROLO,10:11,7,ritardo 7 min.,2,,False,0,
+2026-09-29 09:22:56,2026-09-29,26118,REG,RIVAROLO,10:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 09:38:46,2026-09-29,26114,REG,RIVAROLO,09:41,6,ritardo 6 min.,1,,False,0,
+2026-09-29 09:38:46,2026-09-29,26116,REG,RIVAROLO,10:11,4,ritardo 4 min.,2,,False,0,
+2026-09-29 09:38:46,2026-09-29,26118,REG,RIVAROLO,10:41,7,ritardo 7 min.,1,,False,0,
+2026-09-29 09:38:46,2026-09-29,26120,REG,RIVAROLO,11:11,0,non partito,,,False,0,
+2026-09-29 09:52:13,2026-09-29,26114,REG,RIVAROLO,09:41,6,ritardo 6 min.,1,1,True,0,
+2026-09-29 09:52:13,2026-09-29,26116,REG,RIVAROLO,10:11,5,ritardo 5 min.,2,,False,0,
+2026-09-29 09:52:13,2026-09-29,26118,REG,RIVAROLO,10:41,11,ritardo 11 min.,1,,False,0,
+2026-09-29 09:52:13,2026-09-29,26120,REG,RIVAROLO,11:11,3,ritardo 3 min.,,,False,0,
+2026-09-29 10:06:48,2026-09-29,26116,REG,RIVAROLO,10:11,4,ritardo 4 min.,2,,False,0,
+2026-09-29 10:06:48,2026-09-29,26118,REG,RIVAROLO,10:41,7,ritardo 7 min.,1,,False,0,
+2026-09-29 10:06:48,2026-09-29,26120,REG,RIVAROLO,11:11,6,ritardo 6 min.,,,False,0,
+2026-09-29 10:06:48,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-29 10:25:29,2026-09-29,26116,REG,RIVAROLO,10:11,3,ritardo 3 min.,2,2,True,0,
+2026-09-29 10:25:29,2026-09-29,26118,REG,RIVAROLO,10:41,5,ritardo 5 min.,1,,False,0,
+2026-09-29 10:25:29,2026-09-29,26120,REG,RIVAROLO,11:11,8,ritardo 8 min.,,,False,0,
+2026-09-29 10:25:29,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-29 10:40:30,2026-09-29,26118,REG,RIVAROLO,10:41,4,ritardo 4 min.,1,1,False,0,
+2026-09-29 10:40:30,2026-09-29,26120,REG,RIVAROLO,11:11,5,ritardo 5 min.,,,False,0,
+2026-09-29 10:40:30,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-29 10:57:21,2026-09-29,26118,REG,RIVAROLO,10:41,3,ritardo 3 min.,1,1,True,0,
+2026-09-29 10:57:21,2026-09-29,26120,REG,RIVAROLO,11:11,7,ritardo 7 min.,,,False,0,
+2026-09-29 10:57:21,2026-09-29,26122,REG,TORINO STURA,11:41,0,non partito,1,,False,0,
+2026-09-29 11:10:55,2026-09-29,26120,REG,RIVAROLO,11:11,6,ritardo 6 min.,,,False,0,
+2026-09-29 11:10:55,2026-09-29,26122,REG,TORINO STURA,11:41,3,ritardo 3 min.,1,,False,0,
+2026-09-29 11:10:55,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-29 11:32:24,2026-09-29,26122,REG,TORINO STURA,11:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 11:32:24,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-29 11:32:24,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-29 11:50:33,2026-09-29,26122,REG,TORINO STURA,11:41,0,in orario,1,1,True,0,
+2026-09-29 11:50:33,2026-09-29,26126,REG,TORINO STURA,12:41,0,non partito,1,,False,0,
+2026-09-29 11:50:33,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-29 12:05:33,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 12:05:33,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-29 12:05:33,2026-09-29,26130,REG,RIVAROLO,13:41,0,non partito,1,,False,0,
+2026-09-29 12:23:03,2026-09-29,26126,REG,TORINO STURA,12:41,0,in orario,1,,False,0,
+2026-09-29 12:23:03,2026-09-29,26128,REG,TORINO STURA,13:11,0,non partito,2,,False,0,
+2026-09-29 12:23:03,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 12:39:53,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min.,1,1,False,0,
+2026-09-29 12:39:53,2026-09-29,26128,REG,TORINO STURA,13:11,2,ritardo 2 min.,2,,False,0,
+2026-09-29 12:39:53,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 12:39:53,2026-09-29,26132,REG,RIVAROLO,14:11,0,non partito,,,False,0,
+2026-09-29 12:53:32,2026-09-29,26126,REG,TORINO STURA,12:41,1,ritardo 1 min.,1,1,True,0,
+2026-09-29 12:53:32,2026-09-29,26128,REG,TORINO STURA,13:11,1,ritardo 1 min.,2,,False,0,
+2026-09-29 12:53:32,2026-09-29,26130,REG,RIVAROLO,13:41,-3,in orario,1,,False,0,
+2026-09-29 12:53:32,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 13:05:05,2026-09-29,26128,REG,TORINO STURA,13:11,10,ritardo 10 min.,2,,False,0,
+2026-09-29 13:05:05,2026-09-29,26130,REG,RIVAROLO,13:41,-1,in orario,1,,False,0,
+2026-09-29 13:05:05,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 13:05:05,2026-09-29,26134,REG,RIVAROLO,14:41,0,non partito,1,,False,0,
+2026-09-29 13:21:26,2026-09-29,26128,REG,TORINO STURA,13:11,9,ritardo 9 min.,2,2,True,0,
+2026-09-29 13:21:26,2026-09-29,26130,REG,RIVAROLO,13:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 13:21:26,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 13:21:26,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 13:38:01,2026-09-29,26130,REG,RIVAROLO,13:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 13:38:01,2026-09-29,26132,REG,RIVAROLO,14:11,-1,in orario,,,False,0,
+2026-09-29 13:38:01,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 13:38:01,2026-09-29,26136,REG,RIVAROLO,15:11,0,non partito,,,False,0,
+2026-09-29 13:51:15,2026-09-29,26130,REG,RIVAROLO,13:41,2,ritardo 2 min.,1,1,True,0,
+2026-09-29 13:51:15,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 13:51:15,2026-09-29,26134,REG,RIVAROLO,14:41,5,ritardo 5 min.,1,,False,0,
+2026-09-29 13:51:15,2026-09-29,26136,REG,RIVAROLO,15:11,2,ritardo 2 min.,,,False,0,
+2026-09-29 14:06:18,2026-09-29,26132,REG,RIVAROLO,14:11,3,ritardo 3 min.,,,False,0,
+2026-09-29 14:06:18,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 14:06:18,2026-09-29,26136,REG,RIVAROLO,15:11,5,ritardo 5 min.,,,False,0,
+2026-09-29 14:06:18,2026-09-29,26138,REG,RIVAROLO,15:41,0,non partito,1,,False,0,
+2026-09-29 14:29:29,2026-09-29,26132,REG,RIVAROLO,14:11,1,ritardo 1 min.,,2,True,0,
+2026-09-29 14:29:29,2026-09-29,26134,REG,RIVAROLO,14:41,2,ritardo 2 min.,1,,False,0,
+2026-09-29 14:29:29,2026-09-29,26136,REG,RIVAROLO,15:11,3,ritardo 3 min.,,,False,0,
+2026-09-29 14:29:29,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 14:49:26,2026-09-29,26134,REG,RIVAROLO,14:41,4,ritardo 4 min.,1,1,True,0,
+2026-09-29 14:49:26,2026-09-29,26136,REG,RIVAROLO,15:11,-1,in orario,,,False,0,
+2026-09-29 14:49:26,2026-09-29,26138,REG,RIVAROLO,15:41,6,ritardo 6 min.,1,,False,0,
+2026-09-29 14:49:26,2026-09-29,26140,REG,RIVAROLO,16:11,0,non partito,,,False,0,
+2026-09-29 15:03:41,2026-09-29,26136,REG,RIVAROLO,15:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 15:03:41,2026-09-29,26138,REG,RIVAROLO,15:41,5,ritardo 5 min.,1,,False,0,
+2026-09-29 15:03:41,2026-09-29,26140,REG,RIVAROLO,16:11,1,ritardo 1 min.,,,False,0,
+2026-09-29 15:03:41,2026-09-29,26142,REG,RIVAROLO,16:41,0,non partito,1,,False,0,
+2026-09-29 15:25:54,2026-09-29,26136,REG,RIVAROLO,15:11,0,in orario,,2,True,0,
+2026-09-29 15:25:54,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 15:25:54,2026-09-29,26140,REG,RIVAROLO,16:11,8,ritardo 8 min.,,,False,0,
+2026-09-29 15:25:54,2026-09-29,26142,REG,RIVAROLO,16:41,3,ritardo 3 min.,1,,False,0,
+2026-09-29 15:41:50,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,1,True,0,
+2026-09-29 15:41:50,2026-09-29,26140,REG,RIVAROLO,16:11,7,ritardo 7 min.,,,False,0,
+2026-09-29 15:41:50,2026-09-29,26142,REG,RIVAROLO,16:41,5,ritardo 5 min.,1,,False,0,
+2026-09-29 15:41:50,2026-09-29,26144,REG,RIVAROLO,17:11,0,non partito,2,,False,0,
+2026-09-29 15:59:14,2026-09-29,26138,REG,RIVAROLO,15:41,1,ritardo 1 min.,1,1,True,0,
+2026-09-29 15:59:14,2026-09-29,26140,REG,RIVAROLO,16:11,4,ritardo 4 min.,,,False,0,
+2026-09-29 15:59:14,2026-09-29,26142,REG,RIVAROLO,16:41,1,ritardo 1 min.,1,,False,0,
+2026-09-29 15:59:14,2026-09-29,26144,REG,RIVAROLO,17:11,0,in orario,2,,False,0,
