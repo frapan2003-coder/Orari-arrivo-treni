@@ -30,21 +30,22 @@
     margin-bottom: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .stat { text-align: center; }
   .stat .value { font-size: 1.6rem; font-weight: 700; }
   .stat .label { font-size: 0.75rem; color: #888; }
   table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
   th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #eee; }
   th { background: #f0f0f0; position: sticky; top: 0; }
-  select { padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; }
+  select { padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; margin-right: 8px; margin-bottom: 8px; }
   #status { color: #888; font-size: 0.85rem; }
   .late { color: #d32f2f; font-weight: 600; }
+  .warning { color: #e65100; font-weight: 600; }
   .ontime { color: #2e7d32; font-weight: 600; }
+  .scope-row { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  .avg-delay { text-align: center; margin-top: 4px; }
+  .avg-delay .value { font-size: 2rem; font-weight: 700; color: #1976d2; }
+  .avg-delay .label { font-size: 0.8rem; color: #888; }
 </style>
 </head>
 <body>
@@ -58,12 +59,34 @@
 </div>
 
 <div class="card">
+  <h3 style="margin-top:0">Statistiche</h3>
+  <div class="scope-row">
+    <select id="scopeSelect">
+      <option value="giorno">Giornaliero</option>
+      <option value="mese">Mensile</option>
+      <option value="totale">Totale</option>
+    </select>
+    <select id="daySelectStats"></select>
+    <select id="monthSelectStats" style="display:none;"></select>
+  </div>
+  <div class="avg-delay">
+    <div class="value" id="avgDelayValue">–</div>
+    <div class="label" id="avgDelayLabel">ritardo medio (min), solo treni arrivati</div>
+  </div>
+  <canvas id="bucketChart" height="180"></canvas>
+  <div style="font-size:0.75rem; color:#888; margin-top:6px;">
+    Percentuali calcolate solo sui treni con esito noto (arrivati + soppressi/limitati);
+    i treni ancora "non arrivati" al momento del rilevamento non vengono conteggiati.
+  </div>
+</div>
+
+<div class="card">
   <h3 style="margin-top:0">Dettaglio giornaliero</h3>
   <select id="daySelect"></select>
   <div style="overflow-x:auto; margin-top:10px;">
     <table id="detailTable">
       <thead>
-        <tr><th>Treno</th><th>Da</th><th>Orario previsto</th><th>Ritardo</th></tr>
+        <tr><th>Treno</th><th>Da</th><th>Orario previsto</th><th>Esito</th></tr>
       </thead>
       <tbody></tbody>
     </table>
@@ -88,8 +111,7 @@ function parseCSV(text) {
 async function loadSummary() {
   const res = await fetch(SUMMARY_URL, { cache: "no-store" });
   if (!res.ok) throw new Error("summary.csv non trovato");
-  const rows = parseCSV(await res.text());
-  return rows;
+  return parseCSV(await res.text());
 }
 
 async function loadDayDetail(day) {
@@ -134,18 +156,145 @@ function renderDetailTable(rows) {
   const tbody = document.querySelector("#detailTable tbody");
   tbody.innerHTML = "";
   rows.forEach(r => {
-    const delay = parseInt(r.ritardo_minuti);
-    const delayClass = isNaN(delay) ? "" : (delay > 5 ? "late" : "ontime");
-    const delayText = isNaN(delay) ? "n/d" : (delay + " min");
+    let stateClass = "", stateLabel = r.ritardo_testo || "";
+    if (r.esito === "non_arrivato") {
+      stateClass = "late";
+      stateLabel = `Non arrivato (ultimo rilevamento ${r.ultimo_rilevamento || "?"})`;
+    } else if (r.esito === "soppresso" || r.esito === "limitato/parzialmente soppresso") {
+      stateClass = "late";
+      stateLabel = r.provvedimento || (r.esito === "soppresso" ? "Treno soppresso" : "Treno limitato/parzialmente soppresso");
+    } else {
+      const d = parseInt(r.ritardo_minuti);
+      if (isNaN(d)) {
+        stateClass = "";
+      } else if (d < 3) {
+        stateClass = "ontime";
+      } else if (d < 5) {
+        stateClass = "warning";
+      } else {
+        stateClass = "late";
+      }
+      stateLabel = r.ritardo_testo || (isNaN(d) ? "" : `${d} min`);
+    }
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${r.numero_treno ?? ""}</td>
       <td>${r.origine ?? ""}</td>
       <td>${r.orario_arrivo_previsto ?? ""}</td>
-      <td class="${delayClass}">${delayText}</td>
+      <td class="${stateClass}">${stateLabel}</td>
     `;
     tbody.appendChild(tr);
   });
+}
+
+// ---- Sezione statistiche (giorno / mese / totale) ----
+
+let bucketChartInstance = null;
+let summaryRowsGlobal = [];
+
+function aggregateRows(rows) {
+  const num = (v) => parseFloat(v) || 0;
+  let nArrivatiTot = 0, nSoppTot = 0;
+  let sotto3 = 0, tra3e5 = 0, oltre5 = 0;
+  let sommaRitardoPonderata = 0;
+
+  rows.forEach(r => {
+    const nArr = num(r.n_arrivati);
+    nArrivatiTot += nArr;
+    nSoppTot += num(r.n_soppressi_o_limitati);
+    sotto3 += num(r.n_puntuali_sotto3);
+    tra3e5 += num(r.n_ritardo_3_5);
+    oltre5 += num(r.n_ritardo_oltre5);
+    if (r.ritardo_medio_min !== "" && r.ritardo_medio_min !== undefined) {
+      sommaRitardoPonderata += num(r.ritardo_medio_min) * nArr;
+    }
+  });
+
+  const denom = nArrivatiTot + nSoppTot;
+  const pct = (x) => denom > 0 ? Math.round((x / denom) * 1000) / 10 : 0;
+
+  return {
+    ritardoMedio: nArrivatiTot > 0 ? Math.round((sommaRitardoPonderata / nArrivatiTot) * 10) / 10 : null,
+    denom,
+    pctSotto3: pct(sotto3),
+    pctTra3e5: pct(tra3e5),
+    pctOltre5: pct(oltre5),
+    pctSoppressi: pct(nSoppTot),
+  };
+}
+
+function renderBucketChart(stats) {
+  const ctx = document.getElementById("bucketChart");
+  const data = {
+    labels: ["Puntuale (<3 min)", "Ritardo lieve (3-5 min)", "Ritardo alto (>5 min)", "Soppresso/limitato"],
+    datasets: [{
+      data: [stats.pctSotto3, stats.pctTra3e5, stats.pctOltre5, stats.pctSoppressi],
+      backgroundColor: ["#2e7d32", "#e65100", "#d32f2f", "#616161"],
+    }]
+  };
+  if (bucketChartInstance) {
+    bucketChartInstance.data = data;
+    bucketChartInstance.update();
+    return;
+  }
+  bucketChartInstance = new Chart(ctx, {
+    type: "bar",
+    data,
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: "% treni" } } }
+    }
+  });
+}
+
+function refreshStats() {
+  const scope = document.getElementById("scopeSelect").value;
+  let rows = [];
+  if (scope === "giorno") {
+    const day = document.getElementById("daySelectStats").value;
+    rows = summaryRowsGlobal.filter(r => r.data === day);
+  } else if (scope === "mese") {
+    const mese = document.getElementById("monthSelectStats").value;
+    rows = summaryRowsGlobal.filter(r => r.data && r.data.startsWith(mese));
+  } else {
+    rows = summaryRowsGlobal;
+  }
+  const stats = aggregateRows(rows);
+  document.getElementById("avgDelayValue").textContent =
+    stats.ritardoMedio !== null ? stats.ritardoMedio + " min" : "n/d";
+  renderBucketChart(stats);
+}
+
+function setupStatsControls(summary) {
+  summaryRowsGlobal = summary;
+  const scopeSelect = document.getElementById("scopeSelect");
+  const daySelectStats = document.getElementById("daySelectStats");
+  const monthSelectStats = document.getElementById("monthSelectStats");
+
+  summary.slice().reverse().forEach(r => {
+    const opt = document.createElement("option");
+    opt.value = r.data; opt.textContent = r.data;
+    daySelectStats.appendChild(opt);
+  });
+
+  const mesi = [...new Set(summary.map(r => r.data ? r.data.slice(0, 7) : "").filter(Boolean))].sort().reverse();
+  mesi.forEach(m => {
+    const opt = document.createElement("option");
+    opt.value = m; opt.textContent = m;
+    monthSelectStats.appendChild(opt);
+  });
+
+  function updateVisibility() {
+    const scope = scopeSelect.value;
+    daySelectStats.style.display = scope === "giorno" ? "" : "none";
+    monthSelectStats.style.display = scope === "mese" ? "" : "none";
+    refreshStats();
+  }
+  scopeSelect.addEventListener("change", updateVisibility);
+  daySelectStats.addEventListener("change", refreshStats);
+  monthSelectStats.addEventListener("change", refreshStats);
+  updateVisibility();
 }
 
 async function init() {
@@ -158,6 +307,7 @@ async function init() {
     }
     statusEl.textContent = `${summary.length} giorni di dati raccolti — aggiornato al ${summary[summary.length-1].data}`;
     renderChart(summary);
+    setupStatsControls(summary);
 
     const select = document.getElementById("daySelect");
     summary.slice().reverse().forEach(r => {
@@ -186,3 +336,4 @@ init();
 
 </body>
 </html>
+
