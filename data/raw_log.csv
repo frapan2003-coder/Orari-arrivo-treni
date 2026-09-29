@@ -387,3 +387,7 @@ rilevamento_locale,data_riferimento,numero_treno,categoria,origine,orario_arrivo
 2026-09-29 17:41:54,2026-09-29,26148,REG,RIVAROLO,18:11,6,ritardo 6 min.,,,False,0,
 2026-09-29 17:41:54,2026-09-29,26150,REG,RIVAROLO,18:41,8,ritardo 8 min.,1,,False,0,
 2026-09-29 17:41:54,2026-09-29,26152,REG,RIVAROLO,19:11,0,non partito,,,False,0,
+2026-09-29 17:58:35,2026-09-29,26146,REG,RIVAROLO,17:41,6,ritardo 6 min.,1,1,True,0,
+2026-09-29 17:58:35,2026-09-29,26148,REG,RIVAROLO,18:11,8,ritardo 8 min.,,,False,0,
+2026-09-29 17:58:35,2026-09-29,26150,REG,RIVAROLO,18:41,8,ritardo 8 min.,1,,False,0,
+2026-09-29 17:58:35,2026-09-29,26152,REG,RIVAROLO,19:11,0,in orario,,,False,0,
