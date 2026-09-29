@@ -169,6 +169,44 @@ def ensure_raw_log():
             csv.writer(f).writerow(RAW_HEADER)
 
 
+def compatta_ultimo_rilevamento_per_treno():
+    """Riduce raw_log.csv a UNA riga per treno per giorno: l'ultimo
+    rilevamento in cui il treno è comparso nel tabellone (che sia
+    'in_stazione' True o False). L'unica eccezione è il campo
+    provvedimento: una volta rilevato soppresso/limitato (codice 1 o 2),
+    resta congelato per sempre, anche se un controllo successivo mostrasse
+    di nuovo lo stato 'normale' (0)."""
+    if not os.path.exists(RAW_LOG_PATH):
+        return
+    with open(RAW_LOG_PATH, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
+        if reader.fieldnames != RAW_HEADER:
+            return  # verrà gestito da migrate_raw_log() alla prossima run
+
+    latest = {}
+    for r in rows:
+        key = (r["data_riferimento"], r["numero_treno"], r["orario_arrivo_previsto"])
+        if key not in latest:
+            latest[key] = dict(r)
+        else:
+            prev = latest[key]
+            merged = dict(r)  # parti dai valori più recenti...
+            if prev.get("provvedimento_codice") in ("1", "2"):
+                # ...ma congela per sempre la soppressione già rilevata
+                merged["provvedimento_codice"] = prev["provvedimento_codice"]
+                merged["provvedimento_descrizione"] = prev["provvedimento_descrizione"]
+            latest[key] = merged
+
+    ordered = sorted(latest.values(),
+                      key=lambda r: (r["data_riferimento"], r["orario_arrivo_previsto"], r["numero_treno"]))
+
+    with open(RAW_LOG_PATH, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=RAW_HEADER)
+        w.writeheader()
+        w.writerows(ordered)
+
+
 def main():
     ensure_raw_log()
     now = datetime.now(timezone.utc).astimezone(ROME)
@@ -196,9 +234,11 @@ def main():
         ])
     with open(RAW_LOG_PATH, "a", newline="", encoding="utf-8") as f:
         csv.writer(f).writerows(rows)
+    compatta_ultimo_rilevamento_per_treno()
     print(f"[{stamp}] Registrati {len(rows)} treni nel tabellone arrivi.")
 
 
 if __name__ == "__main__":
     main()
+
 
