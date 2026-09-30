@@ -59,5 +59,6 @@ rilevamento_locale,data_riferimento,numero_treno,categoria,origine,orario_arrivo
 2026-09-29 20:27:31,2026-09-29,26156,REG,RIVAROLO,20:11,2,ritardo 2 min.,,2,True,0,
 2026-09-29 20:58:39,2026-09-29,26158,REG,RIVAROLO,20:41,0,in orario,,1,True,0,
 2026-09-29 21:12:01,2026-09-29,26160,REG,RIVAROLO,21:11,2,ritardo 2 min.,1,1,False,0,
-2026-09-30 05:22:35,2026-09-30,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
-2026-09-30 05:22:35,2026-09-30,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,
+2026-09-30 05:39:43,2026-09-30,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,
+2026-09-30 05:39:43,2026-09-30,26102,REG,RIVAROLO,06:41,2,ritardo 2 min.,,,False,0,
+2026-09-30 05:39:43,2026-09-30,26104,REG,RIVAROLO,07:11,0,non partito,,,False,0,
