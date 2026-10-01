@@ -34,21 +34,14 @@ jobs:
         run: |
           GIORNO_MANUALE="${{ github.event.inputs.giorno }}"
           if [ -n "$GIORNO_MANUALE" ]; then
-            echo "Rigenerazione manuale richiesta per $GIORNO_MANUALE"
+            echo "Rigenerazione manuale forzata anche per $GIORNO_MANUALE"
             python generate_report.py "$GIORNO_MANUALE"
           else
-            # Comportamento automatico: durante la prima ora del nuovo giorno
-            # (ora italiana), prova a generare il report del giorno APPENA
-            # concluso. Essendo eseguito ogni 10 minuti, ci sono circa 6
-            # tentativi in quell'ora: ne basta uno solo andato a buon fine.
-            # generate_report.py è idempotente, quindi i tentativi successivi
-            # non creano duplicati né commit inutili.
-            ORA_LOCALE=$(TZ=Europe/Rome date +%H)
-            if [ "$ORA_LOCALE" = "00" ]; then
-              IERI=$(TZ=Europe/Rome date -d "yesterday" +%Y-%m-%d)
-              echo "Generazione automatica per $IERI"
-              python generate_report.py "$IERI"
-            fi
+            # Ad ogni esecuzione (ogni 10 minuti) rigenera automaticamente
+            # TUTTI i giorni conclusi presenti in raw_log.csv (tutto tranne
+            # oggi, ancora in corso). È irrilevante a che ora gira lo
+            # script: niente più dipendenza da un orario preciso.
+            python generate_report.py
           fi
 
       - name: Commit dati aggiornati
@@ -58,4 +51,3 @@ jobs:
           git add data/
           git diff --quiet --cached || git commit -m "Aggiornamento dati $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
-
