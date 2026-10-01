@@ -37,6 +37,8 @@ RAW_HEADER = [
     "in_stazione",
     "provvedimento_codice",     # 0 normale, 1 soppresso, 2 soppresso parzialmente/limitato
     "provvedimento_descrizione",
+    "cod_origine",              # codice stazione di origine del treno (serve per il controllo incrociato)
+    "millis_partenza",          # timestamp (ms) di mezzanotte del giorno di partenza (idem)
 ]
 
 HEADERS = {
@@ -153,6 +155,8 @@ def migrate_raw_log():
             "in_stazione": r["in_stazione"],
             "provvedimento_codice": "1" if r.get("soppresso") == "True" else "0",
             "provvedimento_descrizione": "",
+            "cod_origine": "",
+            "millis_partenza": "",
         })
     with open(RAW_LOG_PATH, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=RAW_HEADER)
@@ -167,6 +171,73 @@ def ensure_raw_log():
     if not os.path.exists(RAW_LOG_PATH):
         with open(RAW_LOG_PATH, "w", newline="", encoding="utf-8") as f:
             csv.writer(f).writerow(RAW_HEADER)
+
+
+def fetch_andamento(cod_origine, numero_treno, millis_partenza):
+    """Dettaglio dell'intero percorso di un treno (solo per la giornata in
+    corso: questa API non restituisce dati per i giorni passati)."""
+    if not cod_origine or not millis_partenza:
+        return None
+    url = f"{BASE_URL}/andamentoTreno/{cod_origine}/{numero_treno}/{millis_partenza}"
+    try:
+        return http_get_json(url)
+    except Exception as e:
+        print(f"Controllo incrociato fallito per il treno {numero_treno}: {e}", file=sys.stderr)
+        return None
+
+
+def verifica_arrivo_a_chieri(row):
+    """Per un treno sparito dal tabellone senza essere mai stato visto
+    'in_stazione', chiede all'API il dettaglio dell'intero percorso e
+    cerca la fermata a Chieri. Ritorna un dict di campi da aggiornare, o
+    None se non si può ancora concludere nulla (si riprova al giro dopo)."""
+    data = fetch_andamento(row.get("cod_origine"), row["numero_treno"], row.get("millis_partenza"))
+    if not data:
+        return None
+
+    if data.get("provvedimento") == 1:
+        return {
+            "provvedimento_codice": "1",
+            "provvedimento_descrizione": solo_italiano(data.get("subTitle")) or "Treno soppresso",
+        }
+
+    fermate = data.get("fermate") or []
+    target = next((f for f in fermate if STATION_NAME.upper() in (f.get("stazione") or "").upper()), None)
+    if target is None:
+        return None  # fermata non trovata nel percorso: riprova al giro dopo
+
+    if target.get("actualFermataType") == 3:
+        return {
+            "provvedimento_codice": "2",
+            "provvedimento_descrizione": solo_italiano(data.get("subTitle")) or "Treno limitato/parzialmente soppresso",
+        }
+
+    arrivo_reale = target.get("arrivoReale")
+    if not arrivo_reale:
+        return None  # non ancora transitato da Chieri: riprova al giro dopo
+
+    ritardo = target.get("ritardoArrivo")
+    if ritardo is None:
+        programmata = target.get("programmata") or target.get("arrivo_teorico")
+        ritardo = round((arrivo_reale - programmata) / 60000) if programmata else 0
+    ritardo = max(0, ritardo)
+    testo = "in orario" if ritardo == 0 else f"ritardo {ritardo} min."
+
+    return {
+        "in_stazione": "True",
+        "ritardo_minuti": str(ritardo),
+        "ritardo_testo": testo,
+    }
+
+
+def leggi_tutte_le_righe():
+    if not os.path.exists(RAW_LOG_PATH):
+        return []
+    with open(RAW_LOG_PATH, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        if reader.fieldnames != RAW_HEADER:
+            return []  # verrà gestito da migrate_raw_log() alla prossima run
+        return list(reader)
 
 
 def compatta_ultimo_rilevamento_per_treno():
@@ -212,6 +283,7 @@ def main():
     now = datetime.now(timezone.utc).astimezone(ROME)
     stamp = now.strftime("%Y-%m-%d %H:%M:%S")
     day = now.strftime("%Y-%m-%d")
+    now_hhmm = now.strftime("%H:%M")
 
     try:
         arrivals = fetch_arrivals(get_station_code(STATION_NAME))
@@ -220,25 +292,62 @@ def main():
         sys.exit(1)
 
     rows = []
+    numeri_nel_tabellone = set()
     for t in arrivals:
-        rows.append([
-            stamp, day, t.get("numeroTreno"),
-            t.get("categoria") or t.get("categoriaDescrizione"),
-            t.get("origine"), t.get("compOrarioArrivo"), t.get("ritardo"),
-            solo_italiano(t.get("compRitardo")),
-            t.get("binarioProgrammatoArrivoDescrizione"),
-            t.get("binarioEffettivoArrivoDescrizione"),
-            t.get("inStazione"),
-            t.get("provvedimento", 0),
-            solo_italiano(t.get("subTitle")),
-        ])
+        numero = str(t.get("numeroTreno"))
+        numeri_nel_tabellone.add(numero)
+        rows.append({
+            "rilevamento_locale": stamp, "data_riferimento": day,
+            "numero_treno": numero,
+            "categoria": t.get("categoria") or t.get("categoriaDescrizione"),
+            "origine": t.get("origine"),
+            "orario_arrivo_previsto": t.get("compOrarioArrivo"),
+            "ritardo_minuti": t.get("ritardo"),
+            "ritardo_testo": solo_italiano(t.get("compRitardo")),
+            "binario_previsto": t.get("binarioProgrammatoArrivoDescrizione"),
+            "binario_effettivo": t.get("binarioEffettivoArrivoDescrizione"),
+            "in_stazione": t.get("inStazione"),
+            "provvedimento_codice": str(t.get("provvedimento", 0)),
+            "provvedimento_descrizione": solo_italiano(t.get("subTitle")),
+            "cod_origine": t.get("codOrigine"),
+            "millis_partenza": t.get("dataPartenzaTreno"),
+        })
+
+    # Controllo incrociato: treni di oggi già usciti dal tabellone, con
+    # orario previsto già passato, che non sono mai stati visti arrivati
+    # né già segnalati soppressi/limitati -> verifica diretta sul treno.
+    correzioni = []
+    for r in leggi_tutte_le_righe():
+        if r["data_riferimento"] != day:
+            continue
+        if r["in_stazione"] == "True":
+            continue
+        if r.get("provvedimento_codice") in ("1", "2"):
+            continue
+        if r["numero_treno"] in numeri_nel_tabellone:
+            continue  # ancora nel tabellone: nessun bisogno di verificare ora
+        orario_previsto = r.get("orario_arrivo_previsto") or ""
+        if orario_previsto and orario_previsto > now_hhmm:
+            continue  # non ancora dovuto
+        esito = verifica_arrivo_a_chieri(r)
+        if esito:
+            riga = dict(r)
+            riga.update(esito)
+            riga["rilevamento_locale"] = stamp
+            correzioni.append(riga)
+
     with open(RAW_LOG_PATH, "a", newline="", encoding="utf-8") as f:
-        csv.writer(f).writerows(rows)
+        w = csv.DictWriter(f, fieldnames=RAW_HEADER)
+        w.writerows(rows)
+        w.writerows(correzioni)
+
     compatta_ultimo_rilevamento_per_treno()
-    print(f"[{stamp}] Registrati {len(rows)} treni nel tabellone arrivi.")
+    msg = f"[{stamp}] Registrati {len(rows)} treni nel tabellone arrivi."
+    if correzioni:
+        msg += f" Confermati via controllo incrociato: {len(correzioni)}."
+    print(msg)
 
 
 if __name__ == "__main__":
     main()
-
 
