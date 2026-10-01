@@ -118,4 +118,4 @@ rilevamento_locale,data_riferimento,numero_treno,categoria,origine,orario_arrivo
 2026-10-01 19:53:08,2026-10-01,26154,REG,RIVAROLO,19:41,3,ritardo 3 min.,1,1,True,0,
 2026-10-01 19:00:14,2026-10-01,26156,REG,RIVAROLO,20:11,3,ritardo 3 min.,,,False,0,
 2026-10-01 20:59:30,2026-10-01,26158,REG,TORINO LINGOTTO,20:41,2,ritardo 2 min.,,1,True,0,
-2026-10-01 20:59:30,2026-10-01,26160,REG,RIVAROLO,21:11,4,ritardo 4 min.,1,,False,0,
+2026-10-01 21:14:46,2026-10-01,26160,REG,RIVAROLO,21:11,2,ritardo 2 min.,1,1,True,0,
