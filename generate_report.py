@@ -132,9 +132,10 @@ def stats_for_day_detail(detail):
 
 def rebuild_summary():
     """Ricostruisce data/summary.csv da zero leggendo TUTTI i report
-    giornalieri già presenti in data/reports/. Così summary.csv resta
-    sempre coerente con lo storico completo (nessun giorno viene perso),
-    anche se cambia la logica di calcolo delle statistiche in futuro."""
+    giornalieri già presenti in data/reports/. Se un file è in un formato
+    vecchio/malformato (es. rimasto da una versione precedente dello
+    script) viene semplicemente saltato con un avviso, invece di bloccare
+    l'intera esecuzione."""
     if not os.path.isdir(REPORTS_DIR):
         return
     giorni = sorted(
@@ -149,23 +150,53 @@ def rebuild_summary():
             with open(os.path.join(REPORTS_DIR, f"report_{giorno}.csv"),
                       newline="", encoding="utf-8") as f:
                 detail = list(csv.DictReader(f))
-            s = stats_for_day_detail(detail)
+            try:
+                s = stats_for_day_detail(detail)
+            except KeyError as e:
+                print(f"Attenzione: report_{giorno}.csv in formato non valido "
+                      f"(manca il campo {e}), lo salto. Verrà rigenerato alla "
+                      f"prossima esecuzione se {giorno} è ancora in raw_log.csv.",
+                      file=sys.stderr)
+                continue
             w.writerow([giorno] + [s[k] for k in SUMMARY_HEADER[1:]])
 
 
-def main():
-    target_day = sys.argv[1] if len(sys.argv) > 1 else \
-        datetime.now(timezone.utc).astimezone(ROME).strftime("%Y-%m-%d")
+def load_all_raw_rows():
+    if not os.path.exists(RAW_LOG_PATH):
+        return []
+    with open(RAW_LOG_PATH, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
 
-    rows = load_rows_for_day(target_day)
-    if not rows:
-        print(f"Nessun dato trovato per {target_day}.")
+
+def main():
+    giorno_forzato = sys.argv[1] if len(sys.argv) > 1 else None
+
+    rows_all = load_all_raw_rows()
+    if not rows_all:
+        print("Nessun dato trovato in raw_log.csv.")
         return
 
-    detail = build_daily_detail(rows)
-    path = write_daily_detail(target_day, detail)
+    oggi_locale = datetime.now(timezone.utc).astimezone(ROME).strftime("%Y-%m-%d")
+    giorni_presenti = sorted({r["data_riferimento"] for r in rows_all if r.get("data_riferimento")})
+    # Rigenera tutti i giorni conclusi (tutto tranne oggi, che è ancora in
+    # corso) a ogni esecuzione: così è irrilevante A CHE ORA gira lo script,
+    # ed eventuali file vecchi/corrotti vengono sempre riscritti da zero.
+    giorni_da_generare = [g for g in giorni_presenti if g != oggi_locale]
+    if giorno_forzato and giorno_forzato not in giorni_da_generare:
+        giorni_da_generare.append(giorno_forzato)
+        giorni_da_generare.sort()
+
+    if not giorni_da_generare:
+        print("Nessun giorno concluso da elaborare (ci sono solo dati di oggi).")
+        return
+
+    for giorno in giorni_da_generare:
+        rows = [r for r in rows_all if r["data_riferimento"] == giorno]
+        detail = build_daily_detail(rows)
+        write_daily_detail(giorno, detail)
+
     rebuild_summary()
-    print(f"Report giornaliero scritto in {path} ({len(detail)} treni).")
+    print(f"Rigenerati {len(giorni_da_generare)} report giornalieri: {', '.join(giorni_da_generare)}")
     print(f"Riepilogo ricostruito in {SUMMARY_PATH}.")
 
 
