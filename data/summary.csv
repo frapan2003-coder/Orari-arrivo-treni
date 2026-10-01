@@ -1,2 +1,4 @@
-data,n_treni_osservati,n_soppressi,ritardo_medio_min,ritardo_mediano_min,ritardo_massimo_min,treni_puntuali_entro_5min
-2026-09-28,30,0,3.6,3.0,12,23
+data,n_treni_osservati,n_arrivati,n_non_arrivati,n_soppressi_o_limitati,n_puntuali_sotto3,n_ritardo_3_5,n_ritardo_oltre5,ritardo_medio_min,ritardo_mediano_min,ritardo_massimo_min
+2026-09-28,30,25,5,0,10,11,4,3.0,3,7
+2026-09-29,30,24,6,0,12,6,6,3.2,2.5,9
+2026-09-30,30,25,5,0,11,10,4,3.4,3,12
