@@ -2,11 +2,11 @@ name: Monitoraggio ritardi treni Chieri
 
 on:
   schedule:
-    # Unico schedule: ogni 10 minuti, tutti i giorni. GitHub non garantisce
-    # la precisione al minuto (può slittare di qualche minuto nei momenti
-    # di carico), per questo il report di fine giornata NON si basa su un
-    # singolo orario esatto ma viene ritentato più volte (vedi sotto).
-    - cron: "*/10 * * * *"
+    # Ogni 5 minuti: riduce (non elimina) la probabilità che un treno
+    # "sparisca" dal tabellone tra un controllo e l'altro prima di essere
+    # colto come arrivato. Il controllo incrociato in tracker.py copre i
+    # casi che anche questa frequenza non riuscisse a cogliere.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       giorno:
@@ -51,3 +51,4 @@ jobs:
           git add data/
           git diff --quiet --cached || git commit -m "Aggiornamento dati $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
+
