@@ -1,3 +1,3 @@
 rilevamento_locale,data_riferimento,numero_treno,categoria,origine,orario_arrivo_previsto,ritardo_minuti,ritardo_testo,binario_previsto,binario_effettivo,in_stazione,provvedimento_codice,provvedimento_descrizione,cod_origine,millis_partenza
-2026-10-02 05:00:50,2026-10-02,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,,S00452,1790892000000
-2026-10-02 05:00:50,2026-10-02,26102,REG,RIVAROLO,06:41,0,non partito,,,False,0,,S00884,1790892000000
+2026-10-02 05:21:27,2026-10-02,26101,REG,TORINO LINGOTTO,06:11,0,non partito,2,,False,0,,S00452,1790892000000
+2026-10-02 05:21:27,2026-10-02,26102,REG,RIVAROLO,06:41,1,ritardo 1 min.,,,False,0,,S00884,1790892000000
