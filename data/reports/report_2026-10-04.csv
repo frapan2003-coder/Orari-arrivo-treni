@@ -1,0 +1,4 @@
+numero_treno,categoria,origine,orario_arrivo_previsto,esito,ritardo_minuti,ritardo_testo,ultimo_rilevamento,provvedimento
+26168,REG,RIVAROLO,07:41,arrivato,3,ritardo 3 min.,2026-10-04 08:08:55,
+26170,REG,RIVAROLO,09:41,arrivato,1,ritardo 1 min.,2026-10-04 15:01:48,
+26176,REG,RIVAROLO,15:41,arrivato,1,ritardo 1 min.,2026-10-04 20:21:30,
