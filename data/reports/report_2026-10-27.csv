@@ -1,0 +1,11 @@
+numero_treno,categoria,origine,orario_arrivo_previsto,esito,ritardo_minuti,ritardo_testo,ultimo_rilevamento,provvedimento
+26112,REG,RIVAROLO,09:11,arrivato,5,ritardo 5 min.,2026-10-27 15:38:09,
+26114,REG,RIVAROLO,09:41,arrivato,7,ritardo 7 min.,2026-10-27 15:38:09,
+26116,REG,RIVAROLO,10:11,arrivato,5,ritardo 5 min.,2026-10-27 15:38:09,
+26118,REG,RIVAROLO,10:41,arrivato,5,ritardo 5 min.,2026-10-27 15:38:09,
+26138,REG,RIVAROLO,15:41,arrivato,9,ritardo 9 min.,2026-10-27 20:38:43,
+26140,REG,TORINO STURA,16:11,arrivato,1,ritardo 1 min.,2026-10-27 20:38:43,
+26142,REG,RIVAROLO,16:41,arrivato,1,ritardo 1 min.,2026-10-27 20:38:43,
+26144,REG,RIVAROLO,17:11,arrivato,4,ritardo 4 min.,2026-10-27 20:38:43,
+26158,REG,RIVAROLO,20:41,non_arrivato,5,ritardo 5 min.,2026-10-27 20:38:43,
+26160,REG,RIVAROLO,21:11,non_arrivato,5,ritardo 5 min.,2026-10-27 20:38:43,
