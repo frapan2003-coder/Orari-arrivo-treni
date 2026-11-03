@@ -1,0 +1,4 @@
+numero_treno,categoria,origine,orario_arrivo_previsto,esito,ritardo_minuti,ritardo_testo,ultimo_rilevamento,provvedimento
+26148,REG,RIVAROLO,18:11,non_arrivato,162,Mancato rilevamento,2026-11-02 20:47:56,
+26158,REG,TORINO LINGOTTO,20:41,arrivato,3,ritardo 3 min.,2026-11-02 20:47:56,
+26160,REG,TROFARELLO,21:11,non_arrivato,,non partito,2026-11-02 20:47:56,
