@@ -1,0 +1,9 @@
+numero_treno,categoria,origine,orario_arrivo_previsto,esito,ritardo_minuti,ritardo_testo,ultimo_rilevamento,provvedimento
+26116,REG,RIVAROLO,10:11,arrivato,4,ritardo 4 min.,2026-11-04 10:25:57,
+26118,REG,RIVAROLO,10:41,arrivato,1,ritardo 1 min.,2026-11-04 18:25:21,
+26120,REG,RIVAROLO,11:11,limitato/parzialmente soppresso,,Treno cancellato da TROFARELLO a CHIERI. Arriva a TROFARELLO,2026-11-04 18:25:21,Treno cancellato da TROFARELLO a CHIERI. Arriva a TROFARELLO
+26122,REG,TORINO STURA,11:41,arrivato,4,ritardo 4 min.,2026-11-04 18:25:21,
+26148,REG,RIVAROLO,18:11,arrivato,11,ritardo 11 min.,2026-11-04 18:25:21,
+26150,REG,RIVAROLO,18:41,arrivato,10,ritardo 10 min.,2026-11-04 23:46:45,
+26152,REG,TORINO LINGOTTO,19:11,arrivato,3,ritardo 3 min.,2026-11-04 23:46:45,
+26154,REG,RIVAROLO,19:41,arrivato,8,ritardo 8 min.,2026-11-04 23:46:45,
