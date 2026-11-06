@@ -1,0 +1,10 @@
+numero_treno,categoria,origine,orario_arrivo_previsto,esito,ritardo_minuti,ritardo_testo,ultimo_rilevamento,provvedimento
+26101,REG,TORINO LINGOTTO,06:11,arrivato,1,ritardo 1 min.,2026-11-06 12:30:29,
+26126,REG,TORINO STURA,12:41,arrivato,3,ritardo 3 min.,2026-11-06 19:21:22,
+26128,REG,TORINO STURA,13:11,limitato/parzialmente soppresso,,Treno cancellato da TORINO LINGOTTO a CHIERI. Arriva a TORINO LINGOTTO,2026-11-06 19:21:22,Treno cancellato da TORINO LINGOTTO a CHIERI. Arriva a TORINO LINGOTTO
+26130,REG,RIVAROLO,13:41,arrivato,1,ritardo 1 min.,2026-11-06 19:21:22,
+26132,REG,RIVAROLO,14:11,arrivato,0,in orario,2026-11-06 19:21:22,
+26152,REG,RIVAROLO,19:11,arrivato,7,ritardo 7 min.,2026-11-06 19:21:22,
+26154,REG,RIVAROLO,19:41,non_arrivato,13,ritardo 13 min.,2026-11-06 19:21:22,
+26156,REG,RIVAROLO,20:11,non_arrivato,5,ritardo 5 min.,2026-11-06 19:21:22,
+26158,REG,RIVAROLO,20:41,non_arrivato,1,ritardo 1 min.,2026-11-06 19:21:22,
