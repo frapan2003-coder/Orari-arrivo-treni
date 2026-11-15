@@ -1,18 +1,25 @@
 name: Monitoraggio ritardi treni Chieri
 
 on:
-  schedule:
-    # Ogni 5 minuti: riduce (non elimina) la probabilità che un treno
-    # "sparisca" dal tabellone tra un controllo e l'altro prima di essere
-    # colto come arrivato. Il controllo incrociato in tracker.py copre i
-    # casi che anche questa frequenza non riuscisse a cogliere.
-    - cron: "*/5 * * * *"
+  # AVVIO PRINCIPALE: un servizio esterno (cron-job.org) chiama l'API di GitHub
+  # ogni 10 minuti ("workflow_dispatch"). A differenza di "schedule", questo
+  # tipo di avvio parte subito e non viene scartato quando GitHub è carico.
   workflow_dispatch:
     inputs:
       giorno:
-        description: "Rigenera manualmente il report di un giorno specifico (formato YYYY-MM-DD). Lascia vuoto per il comportamento automatico normale."
+        description: "Rigenera manualmente il report di un giorno specifico (formato YYYY-MM-DD). Lascia vuoto per il comportamento normale."
         required: false
         default: ""
+  # AVVIO DI RISERVA: lo schedule interno di GitHub, quando funziona, aggiunge
+  # esecuzioni extra. Minuti "sfalsati" per evitare i momenti di maggior carico.
+  schedule:
+    - cron: "7,17,27,37,47,57 * * * *"
+
+# Mai due esecuzioni insieme: se ne arriva una mentre un'altra è in corso,
+# aspetta il suo turno (così non si pestano i piedi nel salvare i dati).
+concurrency:
+  group: monitor-ritardi-treni
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -37,10 +44,8 @@ jobs:
             echo "Rigenerazione manuale forzata anche per $GIORNO_MANUALE"
             python generate_report.py "$GIORNO_MANUALE"
           else
-            # Ad ogni esecuzione (ogni 10 minuti) rigenera automaticamente
-            # TUTTI i giorni conclusi presenti in raw_log.csv (tutto tranne
-            # oggi, ancora in corso). È irrilevante a che ora gira lo
-            # script: niente più dipendenza da un orario preciso.
+            # Rigenera TUTTI i giorni conclusi presenti in raw_log.csv (tutto
+            # tranne oggi, ancora in corso): è irrilevante a che ora gira.
             python generate_report.py
           fi
 
@@ -49,6 +54,19 @@ jobs:
           git config user.name "train-delay-bot"
           git config user.email "actions@github.com"
           git add data/
-          git diff --quiet --cached || git commit -m "Aggiornamento dati $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          if git diff --quiet --cached; then
+            echo "Nessuna modifica da salvare."
+            exit 0
+          fi
+          git commit -m "Aggiornamento dati $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            echo "Tentativo $i di salvataggio non riuscito, riprovo tra 5 secondi..."
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Impossibile salvare i dati dopo 3 tentativi." >&2
+          exit 1
 
