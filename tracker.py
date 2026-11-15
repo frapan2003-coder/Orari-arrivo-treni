@@ -41,6 +41,11 @@ RAW_HEADER = [
     "millis_partenza",          # timestamp (ms) di mezzanotte del giorno di partenza (idem)
 ]
 
+# Limiti del controllo incrociato (evita di ripetere all'infinito le stesse
+# richieste a ViaggiaTreno per treni che non si risolvono mai):
+MAX_VERIFICHE_PER_GIRO = 5     # richieste mirate al massimo per ogni esecuzione
+FINESTRA_VERIFICA_MIN = 180    # dopo 3 ore dall'orario previsto si smette di insistere
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -128,8 +133,11 @@ def fetch_arrivals(station_code):
 
 
 def migrate_raw_log():
-    """Se raw_log.csv ha ancora il vecchio formato (ora UTC, ritardo in 9 lingue),
-    lo converte una volta sola al nuovo formato senza perdere righe."""
+    """Porta raw_log.csv alla struttura attuale SENZA MAI scartare righe.
+    - formato originale (ora UTC, ritardo in più lingue): converte i campi;
+    - qualunque altra struttura (colonne aggiunte/tolte in versioni
+      successive): conserva le righe, riempie con valori vuoti le colonne
+      nuove e ignora quelle non più usate."""
     if not os.path.exists(RAW_LOG_PATH):
         return
     with open(RAW_LOG_PATH, newline="", encoding="utf-8") as f:
@@ -139,30 +147,32 @@ def migrate_raw_log():
         old = list(reader)
     new_rows = []
     for r in old:
-        if "poll_timestamp_utc" not in r:
-            continue
-        new_rows.append({
-            "rilevamento_locale": utc_to_locale(r["poll_timestamp_utc"]),
-            "data_riferimento": utc_to_locale(r["poll_timestamp_utc"])[:10],
-            "numero_treno": r["numero_treno"],
-            "categoria": r["categoria"],
-            "origine": r["origine"],
-            "orario_arrivo_previsto": r["orario_arrivo_previsto"],
-            "ritardo_minuti": r["ritardo_minuti_dichiarato"],
-            "ritardo_testo": solo_italiano(r["compRitardo"]),
-            "binario_previsto": r["binario_previsto"],
-            "binario_effettivo": r["binario_effettivo"],
-            "in_stazione": r["in_stazione"],
-            "provvedimento_codice": "1" if r.get("soppresso") == "True" else "0",
-            "provvedimento_descrizione": "",
-            "cod_origine": "",
-            "millis_partenza": "",
-        })
+        if "poll_timestamp_utc" in r:
+            locale = utc_to_locale(r["poll_timestamp_utc"])
+            new_rows.append({
+                "rilevamento_locale": locale,
+                "data_riferimento": locale[:10],
+                "numero_treno": r["numero_treno"],
+                "categoria": r["categoria"],
+                "origine": r["origine"],
+                "orario_arrivo_previsto": r["orario_arrivo_previsto"],
+                "ritardo_minuti": r["ritardo_minuti_dichiarato"],
+                "ritardo_testo": solo_italiano(r["compRitardo"]),
+                "binario_previsto": r["binario_previsto"],
+                "binario_effettivo": r["binario_effettivo"],
+                "in_stazione": r["in_stazione"],
+                "provvedimento_codice": "1" if r.get("soppresso") == "True" else "0",
+                "provvedimento_descrizione": "",
+                "cod_origine": "",
+                "millis_partenza": "",
+            })
+        else:
+            new_rows.append({k: (r.get(k) or "") for k in RAW_HEADER})
     with open(RAW_LOG_PATH, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=RAW_HEADER)
         w.writeheader()
         w.writerows(new_rows)
-    print(f"Migrato raw_log.csv al nuovo formato ({len(new_rows)} righe).")
+    print(f"Migrato raw_log.csv al formato attuale ({len(new_rows)} righe conservate).")
 
 
 def ensure_raw_log():
@@ -291,6 +301,13 @@ def main():
         print(f"Errore durante il fetch: {e}", file=sys.stderr)
         sys.exit(1)
 
+    orari_tabellone = sorted(t.get("compOrarioArrivo") for t in arrivals if t.get("compOrarioArrivo"))
+    if orari_tabellone:
+        print(f"Il tabellone mostra {len(arrivals)} treni, con arrivo previsto dalle "
+              f"{orari_tabellone[0]} alle {orari_tabellone[-1]}.")
+    else:
+        print("Il tabellone non mostra nessun treno.")
+
     rows = []
     numeri_nel_tabellone = set()
     for t in arrivals:
@@ -314,9 +331,16 @@ def main():
         })
 
     # Controllo incrociato: treni di oggi già usciti dal tabellone, con
-    # orario previsto già passato, che non sono mai stati visti arrivati
-    # né già segnalati soppressi/limitati -> verifica diretta sul treno.
-    correzioni = []
+    # orario previsto già passato (da non più di FINESTRA_VERIFICA_MIN minuti),
+    # che non sono mai stati visti arrivati né già segnalati soppressi/limitati
+    # -> verifica diretta sul treno. Si parte dai più recenti e ci si ferma
+    # a MAX_VERIFICHE_PER_GIRO richieste per esecuzione.
+    def a_minuti(hhmm):
+        h, m = hhmm.split(":")
+        return int(h) * 60 + int(m)
+
+    ora_minuti = a_minuti(now_hhmm)
+    candidati = []
     for r in leggi_tutte_le_righe():
         if r["data_riferimento"] != day:
             continue
@@ -327,8 +351,18 @@ def main():
         if r["numero_treno"] in numeri_nel_tabellone:
             continue  # ancora nel tabellone: nessun bisogno di verificare ora
         orario_previsto = r.get("orario_arrivo_previsto") or ""
-        if orario_previsto and orario_previsto > now_hhmm:
+        if ":" not in orario_previsto:
+            continue
+        ritardo_di_verifica = ora_minuti - a_minuti(orario_previsto)
+        if ritardo_di_verifica < 0:
             continue  # non ancora dovuto
+        if ritardo_di_verifica > FINESTRA_VERIFICA_MIN:
+            continue  # troppo vecchio: smetto di insistere
+        candidati.append(r)
+    candidati.sort(key=lambda r: r["orario_arrivo_previsto"], reverse=True)
+
+    correzioni = []
+    for r in candidati[:MAX_VERIFICHE_PER_GIRO]:
         esito = verifica_arrivo_a_chieri(r)
         if esito:
             riga = dict(r)
