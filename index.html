@@ -1,475 +1,882 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ritardi treni — Chieri</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1B3A8A" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A30" media="(prefers-color-scheme: dark)">
+<title>Ritardi dei treni a Chieri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, system-ui, sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 16px;
-    background: #fafafa;
-    color: #1a1a1a;
+/* Colori: cemento (sfondo), blu cartello (la targa e i controlli), inchiostro (testo),
+   rotaia (testo secondario e assi) e i tre colori del semaforo per la scala dei ritardi:
+   verde sotto i 3 minuti, arancio da 3 a meno di 5, rosso da 5 in su. */
+:root {
+  --sfondo: #E4E7E9;
+  --superficie: #EDEFF1;
+  --inchiostro: #1C2430;
+  --secondario: #4D5866;
+  --rotaia: #6A7480;
+  --linea: #C2C8CE;
+  --placca: #1B3A8A;
+  --focus: #1B3A8A;
+  --verde: #1E8E4E;   --verde-t: #146836;   --verde-s: rgba(30, 142, 78, .15);
+  --arancio: #CC6C00; --arancio-t: #8C4A00; --arancio-s: rgba(204, 108, 0, .17);
+  --rosso: #C62F2B;   --rosso-t: #AD2520;   --rosso-s: rgba(198, 47, 43, .14);
+  --titoli: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", "Liberation Sans Narrow", "Helvetica Neue", Arial, sans-serif;
+  --testo: "Atkinson Hyperlegible", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sfondo: #0F1A30;
+    --superficie: #15233F;
+    --inchiostro: #E8ECF4;
+    --secondario: #A9B4C8;
+    --rotaia: #8793AB;
+    --linea: #2B3B5E;
+    --placca: #2A4FBF;
+    --focus: #9DB6FF;
+    --verde: #3BC57E;   --verde-t: #4FD58F;   --verde-s: rgba(59, 197, 126, .18);
+    --arancio: #FFA12B; --arancio-t: #FFB24F; --arancio-s: rgba(255, 161, 43, .18);
+    --rosso: #FF6A60;   --rosso-t: #FF8A82;   --rosso-s: rgba(255, 106, 96, .18);
   }
-  @media (prefers-color-scheme: dark) {
-    body { background: #121212; color: #eee; }
-    .card { background: #1e1e1e !important; }
-    table { color: #eee; }
-    th { background: #2a2a2a !important; }
-  }
-  h1 { font-size: 1.3rem; margin-bottom: 4px; }
-  .subtitle { color: #777; font-size: 0.9rem; margin-bottom: 4px; }
-  .meta-line { color: #888; font-size: 0.85rem; margin-bottom: 16px; }
-  .card {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #eee; }
-  th { background: #f0f0f0; position: sticky; top: 0; }
-  select { padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; margin-right: 8px; margin-bottom: 8px; }
-  #status { color: #888; font-size: 0.85rem; }
-  .late { color: #d32f2f; font-weight: 600; }
-  .warning { color: #e65100; font-weight: 600; }
-  .ontime { color: #2e7d32; font-weight: 600; }
+}
 
-  /* Banner riepilogo in cima */
-  .banner {
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    border-left: 6px solid;
-  }
-  .banner .banner-title { font-size: 0.8rem; opacity: 0.8; margin-bottom: 4px; }
-  .banner .banner-main { font-size: 1.25rem; font-weight: 700; }
-  .banner-green  { background: rgba(46,125,50,0.13);  border-color: #2e7d32; }
-  .banner-orange { background: rgba(230,81,0,0.13);   border-color: #e65100; }
-  .banner-red    { background: rgba(211,47,47,0.13);  border-color: #d32f2f; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--inchiostro);
+  font: 400 16px/1.5 var(--testo);
+  font-variant-numeric: tabular-nums;
+}
+main { max-width: 640px; margin: 0 auto; padding: 0 20px 64px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+[hidden] { display: none !important; }
 
-  /* Selettore a pillole */
-  .pill-group { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-  .pill {
-    border: 1px solid #ccc;
-    background: transparent;
-    color: inherit;
-    border-radius: 999px;
-    padding: 6px 16px;
-    font-size: 0.85rem;
-    cursor: pointer;
-  }
-  .pill.active { background: #1976d2; border-color: #1976d2; color: white; font-weight: 600; }
+/* livelli di ritardo: ogni elemento colorato eredita da qui */
+.liv-ok    { --c: var(--verde);   --c-t: var(--verde-t);   --c-s: var(--verde-s); }
+.liv-medio { --c: var(--arancio); --c-t: var(--arancio-t); --c-s: var(--arancio-s); }
+.liv-alto  { --c: var(--rosso);   --c-t: var(--rosso-t);   --c-s: var(--rosso-s); }
+.liv-nd    { --c: var(--rotaia);  --c-t: var(--secondario); --c-s: transparent; }
 
-  .avg-delay { text-align: center; margin-top: 4px; margin-bottom: 8px; }
-  .avg-delay .value { font-size: 2rem; font-weight: 700; color: #1976d2; }
-  .avg-delay .label { font-size: 0.8rem; color: #888; }
-  .select-row { display: flex; flex-wrap: wrap; align-items: center; }
+h1, h2, h3, p { margin: 0; }
+h2 { font: 600 24px/1.1 var(--titoli); letter-spacing: .01em; }
+h3 { font: 600 20px/1.1 var(--titoli); letter-spacing: .01em; }
+section { margin-top: 44px; }
+.piccolo { font-size: 14px; line-height: 1.45; color: var(--secondario); }
+
+/* targa della stazione */
+.intestazione { padding-top: calc(24px + env(safe-area-inset-top)); }
+.placca { display: inline-block; background: var(--placca); border-radius: 6px; padding: 7px; }
+.placca h1 {
+  font: 600 48px/1 var(--titoli); letter-spacing: .01em; color: #fff;
+  border: 2px solid rgba(255, 255, 255, .92); border-radius: 3px; padding: 3px 24px 6px;
+}
+.meta { margin-top: 12px; color: var(--secondario); font-size: 15px; }
+
+/* scelta del periodo */
+.periodo { margin-top: 28px; }
+.scelta { display: flex; border: 2px solid var(--inchiostro); border-radius: 6px; overflow: hidden; }
+.scelta button {
+  flex: 1; min-height: 46px; padding: 0 10px; border: 0; background: transparent;
+  font: 600 19px/1 var(--titoli); letter-spacing: .02em;
+}
+.scelta button + button { border-left: 2px solid var(--inchiostro); }
+.scelta button[aria-pressed="true"] { background: var(--placca); color: #fff; }
+.passo { display: flex; align-items: center; margin-top: 10px; }
+.freccia {
+  width: 46px; height: 46px; border: 0; background: transparent; border-radius: 6px;
+  display: grid; place-items: center; flex: none;
+}
+.freccia svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.freccia:disabled { opacity: .3; cursor: default; }
+.etichetta-passo {
+  position: relative; flex: 1; text-align: center; min-height: 46px; display: grid; place-items: center;
+  font: 600 26px/1.1 var(--titoli); letter-spacing: .01em;
+}
+.etichetta-passo input {
+  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: 0; padding: 0;
+}
+.etichetta-passo:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+
+/* frase d'apertura */
+.frase { margin-top: 18px; font: 500 31px/1.12 var(--titoli); letter-spacing: .005em; }
+.frase-extra { margin-top: 8px; font-size: 17px; line-height: 1.4; }
+.frase-extra + .frase-extra { margin-top: 4px; }
+
+/* la giornata su un asse orario */
+.titolo-sezione { margin-bottom: 12px; }
+.banda {
+  margin: 0 -20px; padding: 14px 20px 16px; background: var(--superficie);
+  border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea);
+}
+.striscia { width: 100%; min-height: 196px; }
+.striscia svg { display: block; width: 100%; height: auto; overflow: visible; }
+.striscia text { font: 400 12px var(--testo); fill: var(--secondario); }
+.striscia .guida { stroke: var(--rotaia); stroke-width: 1; stroke-dasharray: 3 4; opacity: .7; }
+.striscia .asse { stroke: var(--rotaia); stroke-width: 1.5; }
+.striscia .tacca { stroke: var(--rotaia); stroke-width: 1; }
+.striscia .treno { cursor: pointer; outline: none; }
+.striscia .barra { fill: var(--c); transform-box: fill-box; transform-origin: 50% 100%; }
+.striscia .barra.vuota { fill: var(--c-s); stroke: var(--c); stroke-width: 1.6; stroke-dasharray: 3 2; }
+.striscia .croce { stroke: var(--rotaia); stroke-width: 2; stroke-linecap: round; fill: none; }
+.striscia .contorno { fill: none; stroke: transparent; stroke-width: 2.5; }
+.striscia .treno.sel .contorno { stroke: var(--inchiostro); }
+.striscia .treno:focus-visible .contorno { stroke: var(--focus); }
+.striscia .contatto { fill: transparent; }
+.striscia.anima .barra { animation: sale .7s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(var(--i) * 16ms); }
+@keyframes sale { from { transform: scaleY(0); } }
+.dettaglio { margin-top: 10px; min-height: 48px; font-size: 16px; line-height: 1.4; }
+
+/* calendario dei giorni */
+.mese + .mese { margin-top: 22px; }
+.mese h3 { margin-bottom: 8px; }
+.griglia { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.sigla { font-size: 12px; color: var(--secondario); text-align: center; padding-bottom: 2px; }
+.cella {
+  position: relative; min-height: 56px; padding: 4px 5px 3px; border: 0; border-radius: 3px;
+  border-bottom: 3px solid var(--c); background: var(--c-s);
+  display: flex; flex-direction: column; justify-content: space-between; text-align: left;
+}
+.cella .num { font-size: 12px; line-height: 1; color: var(--secondario); }
+.cella .val { font: 600 20px/1 var(--titoli); color: var(--c-t); }
+.cella .quanti { position: absolute; top: 4px; right: 5px; font-size: 11px; line-height: 1; color: var(--secondario); }
+.cella.vuota { border-bottom-color: transparent; background: transparent; cursor: default; }
+.cella.vuota .num { color: var(--rotaia); opacity: .7; }
+.cella.sel { outline: 2px solid var(--inchiostro); outline-offset: 1px; }
+
+/* distribuzione dei ritardi */
+.barra-distribuzione { display: flex; height: 24px; border-radius: 3px; overflow: hidden; background: var(--linea); }
+.barra-distribuzione span { display: block; min-width: 3px; background: var(--c); }
+.barra-distribuzione .soppresso { background: repeating-linear-gradient(135deg, var(--rotaia) 0 3px, var(--superficie) 3px 7px); }
+.legenda { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-top: 16px; list-style: none; padding: 0; }
+.legenda li { display: grid; grid-template-columns: 12px 1fr; column-gap: 8px; align-items: baseline; }
+.legenda .segno { width: 12px; height: 12px; border-radius: 2px; background: var(--c); align-self: center; }
+.legenda .segno.soppresso { background: repeating-linear-gradient(135deg, var(--rotaia) 0 2px, transparent 2px 4px); outline: 1px solid var(--rotaia); }
+.legenda .nome { font-size: 15px; line-height: 1.25; }
+.legenda .valore { grid-column: 2; font: 600 28px/1.05 var(--titoli); color: var(--c-t); }
+.legenda .valore.neutro { color: var(--inchiostro); }
+.legenda .conta { grid-column: 2; font-size: 13px; color: var(--secondario); }
+
+/* elenco dei treni del giorno */
+.elenco { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
+.elenco li {
+  display: grid; grid-template-columns: 5px 58px 1fr auto; column-gap: 12px; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid var(--linea);
+}
+.elenco li.vuoto { display: block; padding: 16px 0; color: var(--secondario); }
+.elenco .tacca-liv { align-self: stretch; border-radius: 2px; background: var(--c); }
+.elenco .tacca-liv.vuota { background: transparent; border: 1.5px dashed var(--c); }
+.elenco .ora { font: 600 26px/1 var(--titoli); }
+.elenco .chi { font-size: 16px; line-height: 1.3; }
+.elenco .chi small { display: block; font-size: 13px; color: var(--secondario); }
+.elenco .esito { text-align: right; font: 600 23px/1 var(--titoli); color: var(--c-t); }
+.elenco .esito small { display: block; margin-top: 3px; font: 400 12px/1.2 var(--testo); color: var(--secondario); }
+
+/* per treno: barre di media, mediana e 9 volte su 10 */
+.fasce { margin-top: 14px; }
+.guida-barre { margin-top: 12px; }
+.righe-media { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
+.righe-media li, .testa-media {
+  display: grid; grid-template-columns: 50px 1fr 50px 44px 30px; column-gap: 10px; align-items: center;
+}
+.righe-media li { padding: 10px 0; border-bottom: 1px solid var(--linea); }
+.testa-media { margin-top: 14px; padding-bottom: 8px; font-size: 12px; color: var(--secondario); line-height: 1.2; }
+.testa-media span:nth-child(n+3), .righe-media .num-col { text-align: right; }
+.righe-media .ora { font: 600 22px/1 var(--titoli); }
+.righe-media .num-col { font-size: 15px; }
+.righe-media .num-col.forte { font: 600 20px/1 var(--titoli); color: var(--c-t); }
+.righe-media li.pochi .pista, .righe-media li.pochi .num-col.forte { opacity: .5; }
+.col-ora small { display: block; margin-top: 3px; font-size: 12px; line-height: 1; color: var(--secondario); }
+.col-barra small { display: block; margin-top: 2px; font-size: 12px; line-height: 1.2; color: var(--secondario); }
+.pista { position: relative; height: 22px; }
+.pista::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--linea); }
+.pista .media { position: absolute; left: 0; top: 4px; height: 14px; min-width: 2px; background: var(--c); border-radius: 0 2px 2px 0; }
+.pista .mediana { position: absolute; top: 1px; width: 3px; height: 20px; margin-left: -1.5px; background: var(--inchiostro); border-radius: 1px; }
+.pista .nove { position: absolute; top: 4px; width: 14px; height: 14px; margin-left: -7px; border: 2.5px solid var(--inchiostro); border-radius: 50%; background: var(--sfondo); }
+
+.classifica { display: grid; gap: 28px; margin-top: 16px; }
+.classifica ol { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px solid var(--linea); }
+.classifica li {
+  display: grid; grid-template-columns: 26px 54px 1fr auto; column-gap: 10px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--linea);
+}
+.classifica .posto { font: 600 20px/1 var(--titoli); color: var(--secondario); }
+.classifica .ora { font: 600 22px/1 var(--titoli); }
+.classifica .chi { font-size: 15px; }
+.classifica .chi small { color: var(--secondario); font-size: 13px; }
+.classifica .valore { font: 600 22px/1 var(--titoli); color: var(--c-t); text-align: right; }
+
+.vuoto { padding: 16px 0; color: var(--secondario); }
+.errore { margin-top: 28px; padding: 16px; border-left: 5px solid var(--rosso); background: var(--rosso-s); }
+.errore strong { display: block; font: 600 22px/1.1 var(--titoli); margin-bottom: 6px; }
+.chiusura { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--linea); }
+
+@media (min-width: 600px) {
+  .classifica { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .frase { font-size: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
 </style>
 </head>
 <body>
+<main>
+  <header class="intestazione">
+    <div class="placca"><h1>Chieri</h1></div>
+    <p class="meta" id="meta">Leggo i dati…</p>
+  </header>
 
-<h1>🚆 Ritardi treni — arrivi a Chieri</h1>
-<div class="subtitle">Dati raccolti automaticamente da ViaggiaTreno</div>
-<div class="meta-line" id="metaLine">Caricamento…</div>
+  <div id="errore" class="errore" hidden></div>
 
-<div class="card banner" id="todayBanner">
-  <div class="banner-title" id="bannerTitle">Ultimo giorno registrato</div>
-  <div class="banner-main" id="bannerMain">–</div>
-</div>
+  <div id="contenuto" hidden>
+    <section class="periodo" aria-label="Periodo da mostrare">
+      <div class="scelta" id="scelta" role="group" aria-label="Periodo">
+        <button type="button" data-scope="giorno" aria-pressed="true">Giorno</button>
+        <button type="button" data-scope="mese" aria-pressed="false">Mese</button>
+        <button type="button" data-scope="totale" aria-pressed="false">Totale</button>
+      </div>
+      <div class="passo" id="passo">
+        <button type="button" class="freccia" id="prec" aria-label="Giorno precedente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <label class="etichetta-passo" id="etichetta-passo">
+          <span id="testo-passo">–</span>
+          <input type="date" id="input-data" aria-label="Scegli un giorno">
+        </label>
+        <button type="button" class="freccia" id="succ" aria-label="Giorno successivo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div aria-live="polite">
+        <p class="frase" id="frase"></p>
+        <p class="frase-extra" id="extra-nove"></p>
+        <p class="frase-extra" id="extra-solito"></p>
+      </div>
+    </section>
 
-<div class="card">
-  <div id="status">Caricamento dati…</div>
-  <canvas id="trendChart" height="160"></canvas>
-</div>
+    <section>
+      <h2 class="titolo-sezione" id="titolo-hero">Ora per ora</h2>
+      <div class="banda">
+        <div id="vista-giorno">
+          <div class="striscia" id="striscia"></div>
+          <p class="dettaglio" id="dettaglio" aria-live="polite"></p>
+        </div>
+        <div id="vista-calendario" hidden>
+          <div id="calendario"></div>
+          <p class="piccolo" style="margin-top:14px">Ogni casella mostra il ritardo medio del giorno. Il numero in alto a destra è quanti treni sono stati registrati. Tocca un giorno per aprirlo.</p>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-  <h3 style="margin-top:0">Statistiche</h3>
-  <div class="pill-group" id="scopePills">
-    <button class="pill active" data-scope="giorno">Giornaliero</button>
-    <button class="pill" data-scope="mese">Mensile</button>
-    <button class="pill" data-scope="totale">Totale</button>
+    <section>
+      <h2 class="titolo-sezione">Come sono andati i treni</h2>
+      <div class="barra-distribuzione" id="barra-distribuzione" role="img" aria-label="Distribuzione dei ritardi"></div>
+      <ul class="legenda" id="legenda"></ul>
+      <p class="piccolo" id="nota-distribuzione" style="margin-top:14px"></p>
+    </section>
+
+    <section id="sezione-elenco">
+      <h2 class="titolo-sezione">Treno per treno</h2>
+      <ul class="elenco" id="elenco"></ul>
+      <p class="piccolo" style="margin-top:12px">Il confronto con il solito compare quando quel treno ha almeno altri 3 giorni di dati dello stesso tipo.</p>
+    </section>
+
+    <section>
+      <h2 id="titolo-per-treno">Per treno, dalle 16:41 alle 21:11</h2>
+      <div class="scelta fasce" id="scelta-tipo" role="group" aria-label="Tipo di giorno">
+        <button type="button" data-tipo="feriali" aria-pressed="true">Feriali</button>
+        <button type="button" data-tipo="sabato" aria-pressed="false">Sabato</button>
+        <button type="button" data-tipo="domenica" aria-pressed="false">Domenica</button>
+        <button type="button" data-tipo="tutti" aria-pressed="false">Tutti</button>
+      </div>
+      <p class="piccolo guida-barre">La barra è il ritardo medio, il trattino la mediana, il cerchio il "9 volte su 10": il ritardo che il treno non supera nel 90% dei casi. Valori in minuti, solo treni arrivati; "Giorni" è quanti giorni sono stati contati. Il "9 su 10" compare con almeno 5 giorni, e le righe sbiadite hanno meno di 3 giorni.</p>
+      <div id="per-treno"></div>
+    </section>
+
+    <section>
+      <h2>Classifica dei treni</h2>
+      <p class="piccolo" style="margin-top:8px" id="nota-classifica">Per ritardo medio, nel tipo di giorno scelto qui sopra. Contano solo i treni con almeno 3 giorni di arrivi.</p>
+      <div class="classifica" id="classifica"></div>
+    </section>
+
+    <p class="piccolo chiusura">I dati arrivano da ViaggiaTreno. Il ritardo è quello dichiarato quando il treno arriva a Chieri; se non si riesce a confermarlo, il treno risulta non confermato e resta fuori da medie e percentuali.</p>
   </div>
-  <div class="select-row">
-    <select id="daySelectStats"></select>
-    <select id="monthSelectStats" style="display:none;"></select>
-  </div>
-  <div class="avg-delay">
-    <div class="value" id="avgDelayValue">–</div>
-    <div class="label">ritardo medio (min), solo treni arrivati</div>
-  </div>
-  <canvas id="bucketChart" height="220"></canvas>
-  <div style="font-size:0.75rem; color:#888; margin-top:6px;">
-    Percentuali calcolate solo sui treni con esito noto (arrivati + soppressi/limitati);
-    i treni ancora "non arrivati" al momento del rilevamento non vengono conteggiati.
-  </div>
-</div>
-
-<div class="card">
-  <h3 style="margin-top:0">Dettaglio giornaliero</h3>
-  <select id="daySelect"></select>
-
-  <canvas id="dailyDelayChart" height="180" style="margin-top:12px;"></canvas>
-
-  <div style="overflow-x:auto; margin-top:14px;">
-    <table id="detailTable">
-      <thead>
-        <tr><th>Treno</th><th>Da</th><th>Orario previsto</th><th>Esito</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</div>
-
+</main>
 <script>
-const SUMMARY_URL = "data/summary.csv";
-const REPORT_URL_TEMPLATE = "data/reports/report_{day}.csv";
+(() => {
+'use strict';
 
-function parseCSV(text) {
-  const lines = text.trim().split("\n");
-  const headers = lines[0].split(",");
-  return lines.slice(1).map(line => {
-    const cells = line.split(",");
-    const row = {};
-    headers.forEach((h, i) => row[h] = cells[i]);
-    return row;
+const URL_RIEPILOGO = 'data/summary.csv';
+const URL_MEDIE = 'data/medie_treni.csv';
+const urlReport = g => `data/reports/report_${g}.csv`;
+const MIN_GIORNI_CONFRONTO = 3;   // altri giorni necessari per dire "rispetto al solito"
+const MIN_GIORNI_CLASSIFICA = 3;  // giorni di arrivi necessari per entrare in classifica
+const NOMI_TIPO = { feriali: 'i giorni feriali', sabato: 'i sabati', domenica: 'le domeniche' };
+
+const $ = s => document.querySelector(s);
+
+/* ---------- costruzione degli elementi ---------- */
+function monta(e, props, figli) {
+  for (const [k, v] of Object.entries(props || {})) {
+    if (k === 'class') e.setAttribute('class', v);
+    else if (k === 'text') e.textContent = v;
+    else e.setAttribute(k, v);
+  }
+  for (const f of figli.flat()) {
+    if (f === null || f === undefined || f === false) continue;
+    e.append(typeof f === 'object' ? f : document.createTextNode(String(f)));
+  }
+  return e;
+}
+const el = (tag, props, ...figli) => monta(document.createElement(tag), props, figli);
+const sv = (tag, props, ...figli) => monta(document.createElementNS('http://www.w3.org/2000/svg', tag), props, figli);
+
+/* ---------- lettura dei file CSV ---------- */
+function leggiCSV(testo) {
+  testo = testo.replace(/^\uFEFF/, '');
+  const righe = []; let riga = [], campo = '', tra = false;
+  for (let i = 0; i < testo.length; i++) {
+    const c = testo[i];
+    if (tra) {
+      if (c === '"') { if (testo[i + 1] === '"') { campo += '"'; i++; } else tra = false; }
+      else campo += c;
+    } else if (c === '"') tra = true;
+    else if (c === ',') { riga.push(campo); campo = ''; }
+    else if (c === '\n') { riga.push(campo); righe.push(riga); riga = []; campo = ''; }
+    else if (c !== '\r') campo += c;
+  }
+  if (campo !== '' || riga.length) { riga.push(campo); righe.push(riga); }
+  const utili = righe.filter(r => r.length > 1 || (r[0] || '') !== '');
+  if (!utili.length) return [];
+  const [intest, ...resto] = utili;
+  return resto.map(r => Object.fromEntries(intest.map((h, i) => [h.trim(), r[i] === undefined ? '' : r[i]])));
+}
+async function carica(url) {
+  const r = await fetch(url, { cache: 'no-store' });
+  if (!r.ok) throw new Error(`${url}: ${r.status}`);
+  return leggiCSV(await r.text());
+}
+
+/* ---------- numeri, date, testi ---------- */
+const numero = v => { const n = parseFloat(v); return Number.isFinite(n) ? n : null; };
+const intero = v => { const n = parseInt(v, 10); return Number.isFinite(n) ? n : 0; };
+const n = x => x.toLocaleString('it-IT');
+const arr1 = x => Math.round(x * 10) / 10;
+const dec = x => arr1(x).toFixed(1).replace('.', ',');
+const pad = x => String(x).padStart(2, '0');
+function minuti(x) {
+  const r = arr1(x);
+  return `${Number.isInteger(r) ? r : dec(r)} ${r === 1 ? 'minuto' : 'minuti'}`;
+}
+const maiuscola = s => s.charAt(0).toUpperCase() + s.slice(1);
+const titolo = s => (s || '').toLowerCase().replace(/(^|[\s'’-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
+const aMinuti = hhmm => { const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm || ''); return m ? +m[1] * 60 + +m[2] : null; };
+
+const dataDa = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const fmtGiorno = new Intl.DateTimeFormat('it-IT', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+const fmtGiornoMese = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+const fmtMese = new Intl.DateTimeFormat('it-IT', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+const dataLunga = iso => fmtGiorno.format(dataDa(iso));
+const giornoMese = iso => fmtGiornoMese.format(dataDa(iso));
+const meseLungo = ym => fmtMese.format(dataDa(ym + '-01'));
+function tipoGiorno(iso) {
+  const w = dataDa(iso).getUTCDay();
+  return w === 0 ? 'domenica' : (w === 6 ? 'sabato' : 'feriali');
+}
+// verde sotto 3 minuti, arancio da 3 a meno di 5, rosso da 5 in su
+function livello(d) {
+  if (d === null || d === undefined || Number.isNaN(d)) return 'liv-nd';
+  return d < 3 ? 'liv-ok' : (d < 5 ? 'liv-medio' : 'liv-alto');
+}
+
+/* ---------- dati ---------- */
+let giorni = [], mesi = [], medie = [];
+const cacheReport = new Map();
+
+function leggiDistribuzione(testo) {
+  const m = new Map();
+  (testo || '').split(';').forEach(p => {
+    const [a, b] = p.split(':'); const k = parseInt(a, 10), c = parseInt(b, 10);
+    if (Number.isFinite(k) && Number.isFinite(c)) m.set(k, (m.get(k) || 0) + c);
   });
+  return m;
+}
+function leggiRiepilogo(righe) {
+  return righe.filter(r => r.data).map(r => ({
+    data: r.data, tipo: tipoGiorno(r.data),
+    osservati: intero(r.n_treni_osservati), arrivati: intero(r.n_arrivati), nonConf: intero(r.n_non_arrivati),
+    soppressi: intero(r.n_soppressi_o_limitati), sotto3: intero(r.n_puntuali_sotto3),
+    tra35: intero(r.n_ritardo_3_5), oltre5: intero(r.n_ritardo_oltre5),
+    medio: numero(r.ritardo_medio_min), dist: leggiDistribuzione(r.distribuzione_ritardi),
+  })).sort((a, b) => (a.data < b.data ? -1 : 1));
+}
+function leggiMedie(righe) {
+  return righe.map(r => ({
+    tipo: r.tipo_giorno, orario: r.orario_previsto, numero: r.numero_treno, origine: titolo(r.origine),
+    giorni: intero(r.n_giorni), arrivati: intero(r.n_arrivati),
+    medio: numero(r.ritardo_medio_min), mediano: numero(r.ritardo_mediano_min), p90: numero(r.ritardo_p90_min),
+    soppressi: intero(r.n_soppressi_o_limitati), nonConf: intero(r.n_non_confermati),
+    inFascia: r.in_fascia === undefined ? true : r.in_fascia === '1',
+  }));
+}
+function leggiReport(righe) {
+  return righe.map(r => ({
+    orario: r.orario_arrivo_previsto, minuti: aMinuti(r.orario_arrivo_previsto), numero: r.numero_treno,
+    origine: titolo(r.origine), esito: r.esito, ritardo: numero(r.ritardo_minuti),
+    ultimo: (r.ultimo_rilevamento || '').slice(11, 16), provv: r.provvedimento || '',
+  })).sort((a, b) => (a.minuti ?? 0) - (b.minuti ?? 0));
+}
+async function caricaReport(giorno) {
+  if (!cacheReport.has(giorno)) cacheReport.set(giorno, leggiReport(await carica(urlReport(giorno))));
+  return cacheReport.get(giorno);
 }
 
-async function loadSummary() {
-  const res = await fetch(SUMMARY_URL, { cache: "no-store" });
-  if (!res.ok) throw new Error("summary.csv non trovato");
-  return parseCSV(await res.text());
+function percentile90(dist) {
+  let tot = 0; for (const c of dist.values()) tot += c;
+  if (tot < 5) return null;
+  const rango = Math.ceil(9 * tot / 10); let cum = 0;
+  for (const k of [...dist.keys()].sort((a, b) => a - b)) { cum += dist.get(k); if (cum >= rango) return k; }
+  return null;
+}
+function aggrega(lista) {
+  const t = { osservati: 0, arrivati: 0, nonConf: 0, soppressi: 0, sotto3: 0, tra35: 0, oltre5: 0, somma: 0, dist: new Map() };
+  for (const g of lista) {
+    t.osservati += g.osservati; t.arrivati += g.arrivati; t.nonConf += g.nonConf; t.soppressi += g.soppressi;
+    t.sotto3 += g.sotto3; t.tra35 += g.tra35; t.oltre5 += g.oltre5;
+    if (g.medio !== null) t.somma += g.medio * g.arrivati;
+    for (const [k, c] of g.dist) t.dist.set(k, (t.dist.get(k) || 0) + c);
+  }
+  t.medio = t.arrivati > 0 ? t.somma / t.arrivati : null;
+  t.p90 = percentile90(t.dist);
+  t.noti = t.arrivati + t.soppressi;
+  return t;
+}
+function confrontoSolito(g) {
+  const altri = giorni.filter(x => x.tipo === g.tipo && x.data !== g.data && x.arrivati > 0 && x.medio !== null);
+  if (g.medio === null || altri.length < MIN_GIORNI_CONFRONTO) return null;
+  const arrivati = altri.reduce((s, x) => s + x.arrivati, 0);
+  const solito = altri.reduce((s, x) => s + x.medio * x.arrivati, 0) / arrivati;
+  return { solito, diff: g.medio - solito };
+}
+// confronto di un singolo treno con la sua media negli altri giorni dello stesso tipo
+function confrontoTreno(t, tipo) {
+  if (t.esito !== 'arrivato' || t.ritardo === null) return '';
+  const r = medie.find(m => m.tipo === tipo && m.orario === t.orario);
+  if (!r || r.medio === null || r.arrivati - 1 < MIN_GIORNI_CONFRONTO) return '';
+  const solito = (r.medio * r.arrivati - t.ritardo) / (r.arrivati - 1);
+  const diff = t.ritardo - solito;
+  if (Math.abs(diff) < 0.5) return 'come al solito';
+  return `${dec(Math.abs(diff))} min ${diff > 0 ? 'più' : 'meno'} del solito`;
 }
 
-async function loadDayDetail(day) {
-  const url = REPORT_URL_TEMPLATE.replace("{day}", day);
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) return [];
-  return parseCSV(await res.text());
+/* ---------- stato ---------- */
+const stato = { scope: 'giorno', giorno: null, mese: null, tipo: 'feriali' };
+let selIndice = null, ultimiTreni = null, primaVolta = true;
+
+function listaPeriodo() {
+  if (stato.scope === 'giorno') return giorni.filter(g => g.data === stato.giorno);
+  if (stato.scope === 'mese') return giorni.filter(g => g.data.startsWith(stato.mese));
+  return giorni;
+}
+function titoloPeriodo() {
+  if (stato.scope === 'giorno') return maiuscola(dataLunga(stato.giorno));
+  if (stato.scope === 'mese') return maiuscola(meseLungo(stato.mese));
+  return `Dal ${giornoMese(giorni[0].data)} al ${giornoMese(giorni[giorni.length - 1].data)}`;
 }
 
-// Soglie colore condivise in tutta la pagina: verde <3, arancione 3-5 (escluso 5), rosso >=5
-function colorForDelay(min) {
-  if (min === null || min === undefined || isNaN(min)) return "#9e9e9e";
-  if (min < 3) return "#2e7d32";
-  if (min < 5) return "#e65100";
-  return "#d32f2f";
+/* ---------- controlli ---------- */
+function aggiornaControlli() {
+  document.querySelectorAll('#scelta button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.scope === stato.scope)));
+  document.querySelectorAll('#scelta-tipo button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tipo === stato.tipo)));
+  $('#passo').hidden = stato.scope === 'totale';
+  const input = $('#input-data');
+  input.hidden = stato.scope !== 'giorno';
+  if (stato.scope === 'giorno') {
+    $('#testo-passo').textContent = maiuscola(dataLunga(stato.giorno));
+    input.value = stato.giorno;
+    $('#prec').disabled = !giorni.some(g => g.data < stato.giorno);
+    $('#succ').disabled = !giorni.some(g => g.data > stato.giorno);
+    $('#prec').setAttribute('aria-label', 'Giorno precedente');
+    $('#succ').setAttribute('aria-label', 'Giorno successivo');
+  } else if (stato.scope === 'mese') {
+    $('#testo-passo').textContent = maiuscola(meseLungo(stato.mese));
+    const i = mesi.indexOf(stato.mese);
+    $('#prec').disabled = i <= 0;
+    $('#succ').disabled = i < 0 || i >= mesi.length - 1;
+    $('#prec').setAttribute('aria-label', 'Mese precedente');
+    $('#succ').setAttribute('aria-label', 'Mese successivo');
+  }
 }
-function bannerClassForDelay(min) {
-  if (min === null || min === undefined || isNaN(min)) return "banner-orange";
-  if (min < 3) return "banner-green";
-  if (min < 5) return "banner-orange";
-  return "banner-red";
+function naviga(dir) {
+  if (stato.scope === 'giorno') {
+    const date = giorni.map(g => g.data);
+    const prossimo = dir < 0 ? [...date].reverse().find(d => d < stato.giorno) : date.find(d => d > stato.giorno);
+    if (prossimo) { stato.giorno = prossimo; selIndice = null; }
+  } else if (stato.scope === 'mese') {
+    const j = mesi.indexOf(stato.mese) + dir;
+    if (j >= 0 && j < mesi.length) stato.mese = mesi[j];
+  }
+  render();
+}
+function scegliGiorno(iso) {
+  stato.scope = 'giorno'; stato.giorno = iso; selIndice = null;
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ---- 1. Banner riepilogo ultimo giorno ----
-function renderBanner(summary) {
-  const last = summary[summary.length - 1];
-  const el = document.getElementById("todayBanner");
-  const title = document.getElementById("bannerTitle");
-  const main = document.getElementById("bannerMain");
-  const ritardoMedio = parseFloat(last.ritardo_medio_min);
-  const puntuali = last.n_puntuali_sotto3;
-  const totali = last.n_treni_osservati;
-
-  title.textContent = `Ultimo giorno registrato — ${last.data}`;
-  const ritardoTxt = isNaN(ritardoMedio) ? "n/d" : `${ritardoMedio} min`;
-  main.textContent = `Ritardo medio ${ritardoTxt} — ${puntuali} puntuali su ${totali} treni`;
-
-  el.classList.remove("banner-green", "banner-orange", "banner-red");
-  el.classList.add(bannerClassForDelay(ritardoMedio));
-}
-
-// ---- 6. Riga con giorno di raccolta e treni totali campionati ----
-function renderMetaLine(summary) {
-  const totaleTreni = summary.reduce((s, r) => s + (parseInt(r.n_treni_osservati) || 0), 0);
-  document.getElementById("metaLine").textContent =
-    `Giorno ${summary.length} — ${totaleTreni} treni campionati finora`;
-}
-
-// ---- 4. Grafico andamento nel tempo, colorato per gravità ----
-function renderTrendChart(rows) {
-  const ctx = document.getElementById("trendChart");
-  const medi = rows.map(r => parseFloat(r.ritardo_medio_min));
-  const massimi = rows.map(r => parseFloat(r.ritardo_massimo_min));
-
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: rows.map(r => r.data),
-      datasets: [
-        {
-          label: "Ritardo medio (min)",
-          data: medi,
-          borderWidth: 3,
-          pointRadius: 4,
-          pointBackgroundColor: medi.map(v => colorForDelay(v)),
-          pointBorderColor: medi.map(v => colorForDelay(v)),
-          segment: {
-            borderColor: c => colorForDelay((c.p0.parsed.y + c.p1.parsed.y) / 2),
-          },
-          tension: 0.25,
-        },
-        {
-          label: "Ritardo massimo (min)",
-          data: massimi,
-          borderColor: "#bbbbbb",
-          borderDash: [4, 4],
-          pointRadius: 0,
-          borderWidth: 1.5,
-          tension: 0.25,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { position: "bottom" } },
-      scales: { y: { beginAtZero: true, title: { display: true, text: "minuti" } } }
+/* ---------- frase d'apertura ---------- */
+function disegnaFrase(t) {
+  const apertura = stato.scope === 'totale' ? `${titoloPeriodo()}. ` : '';
+  let frase;
+  if (t.osservati === 0) frase = `${apertura}Nessun treno registrato.`;
+  else {
+    const parti = [`${n(t.osservati)} ${t.osservati === 1 ? 'treno registrato' : 'treni registrati'}`];
+    parti.push(t.oltre5 === 0 ? 'nessuno oltre i 5 minuti' : `${n(t.oltre5)} oltre i 5 minuti`);
+    if (t.soppressi > 0) parti.push(`${n(t.soppressi)} ${t.soppressi === 1 ? 'soppresso o limitato' : 'soppressi o limitati'}`);
+    frase = `${apertura}${parti.join(', ')}.`;
+    if (t.medio !== null) frase += ` Ritardo medio ${minuti(t.medio)}.`;
+  }
+  $('#frase').textContent = frase;
+  const nove = $('#extra-nove');
+  nove.hidden = t.p90 === null;
+  if (t.p90 !== null) nove.textContent = t.p90 === 0 ? '9 volte su 10 il treno arriva in orario.' : `9 volte su 10 il ritardo è di ${minuti(t.p90)} o meno.`;
+  const solito = $('#extra-solito');
+  solito.hidden = true;
+  if (stato.scope === 'giorno') {
+    const g = giorni.find(x => x.data === stato.giorno);
+    const c = g && confrontoSolito(g);
+    if (c) {
+      solito.hidden = false;
+      const nome = NOMI_TIPO[g.tipo];
+      solito.textContent = Math.abs(c.diff) < 0.3
+        ? `In linea con il solito: ${nome} hanno in media ${minuti(c.solito)} di ritardo.`
+        : `Rispetto al solito ${minuti(Math.abs(c.diff))} in ${c.diff < 0 ? 'meno' : 'più'}: ${nome} hanno in media ${minuti(c.solito)} di ritardo.`;
     }
-  });
+  }
 }
 
-function renderDetailTable(rows) {
-  const tbody = document.querySelector("#detailTable tbody");
-  tbody.innerHTML = "";
-  rows.forEach(r => {
-    let stateClass = "", stateLabel = r.ritardo_testo || "";
-    if (r.esito === "non_arrivato") {
-      stateClass = "late";
-      stateLabel = `Non arrivato (ultimo rilevamento ${r.ultimo_rilevamento || "?"})`;
-    } else if (r.esito === "soppresso" || r.esito === "limitato/parzialmente soppresso") {
-      stateClass = "late";
-      stateLabel = r.provvedimento || (r.esito === "soppresso" ? "Treno soppresso" : "Treno limitato/parzialmente soppresso");
+/* ---------- la giornata su un asse orario ---------- */
+function descrizione(t) {
+  const chi = `${t.orario}, treno ${t.numero} da ${t.origine}.`;
+  if (t.esito === 'arrivato' && t.ritardo !== null) return `${chi} ${t.ritardo === 0 ? 'Arrivato in orario.' : `Arrivato con ${minuti(t.ritardo)} di ritardo.`}`;
+  if (t.esito === 'non_arrivato') return `${chi} Non confermato${t.ultimo ? `, ultimo rilevamento alle ${t.ultimo}` : ''}.`;
+  return `${chi} ${t.provv || (t.esito === 'soppresso' ? 'Treno soppresso.' : 'Treno limitato o parzialmente soppresso.')}`;
+}
+function dettaglioPredefinito(treni) {
+  const arrivati = treni.filter(t => t.esito === 'arrivato' && t.ritardo !== null);
+  if (!arrivati.length) return 'Nessun treno arrivato è stato registrato in questo giorno.';
+  const peggiore = arrivati.reduce((a, b) => (b.ritardo > a.ritardo ? b : a));
+  return peggiore.ritardo === 0
+    ? 'Tutti i treni arrivati erano in orario. Tocca una barra per i dettagli.'
+    : `Il più in ritardo: treno ${peggiore.numero} delle ${peggiore.orario}, ${minuti(peggiore.ritardo)} di ritardo. Tocca una barra per i dettagli.`;
+}
+function disegnaStriscia(treni, animare) {
+  const box = $('#striscia');
+  box.replaceChildren();
+  box.classList.toggle('anima', !!animare);
+  const dettaglio = $('#dettaglio');
+  const validi = treni.filter(t => t.minuti !== null);
+  if (!validi.length) {
+    box.append(el('p', { class: 'vuoto', text: 'Nessun treno registrato in questo giorno.' }));
+    dettaglio.textContent = '';
+    return;
+  }
+  const W = Math.max(280, Math.round(box.clientWidth)), H = 196;
+  const padL = 12, padR = 40, padT = 12, base = H - 30;
+  const plotW = W - padL - padR, plotH = base - padT;
+  const orari = validi.map(t => t.minuti);
+  let inizio = Math.max(0, Math.floor((Math.min(...orari) - 20) / 60) * 60);
+  let fine = Math.min(24 * 60, Math.ceil((Math.max(...orari) + 20) / 60) * 60);
+  if (fine - inizio < 120) fine = Math.min(24 * 60, inizio + 120);
+  if (fine - inizio < 120) inizio = fine - 120;
+  const x = m => padL + (m - inizio) / (fine - inizio) * plotW;
+  const ritardi = treni.map(t => t.ritardo).filter(r => r !== null);
+  const scala = Math.max(10, Math.ceil(Math.max(0, ...ritardi) / 5) * 5);
+  const y = d => base - Math.min(d, scala) / scala * plotH;
+
+  const distinti = [...new Set(orari)].sort((a, b) => a - b);
+  let minGap = Infinity;
+  for (let i = 1; i < distinti.length; i++) minGap = Math.min(minGap, distinti[i] - distinti[i - 1]);
+  const spazio = minGap === Infinity ? 60 : minGap / (fine - inizio) * plotW;
+  const bw = Math.max(3, Math.min(10, spazio * 0.55));
+  const mezzo = Math.max(bw / 2, Math.min(14, spazio / 2));
+
+  const svg = sv('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'group', 'aria-label': 'Ritardo di ogni treno nell’arco della giornata' });
+  for (const s of [3, 5]) {
+    svg.append(sv('line', { class: 'guida', x1: padL, x2: W - padR + 6, y1: y(s), y2: y(s) }),
+               sv('text', { x: W - padR + 10, y: y(s) + 4, text: `${s} min` }));
+  }
+  svg.append(sv('line', { class: 'asse', x1: padL, x2: W - padR, y1: base, y2: base }));
+  const span = (fine - inizio) / 60, passo = span <= 6 ? 1 : (span <= 12 ? 2 : 3);
+  for (let h = Math.ceil(inizio / 60 / passo) * passo; h * 60 <= fine; h += passo) {
+    const xx = x(h * 60);
+    svg.append(sv('line', { class: 'tacca', x1: xx, x2: xx, y1: base, y2: base + 5 }),
+               sv('text', { x: xx, y: base + 20, 'text-anchor': 'middle', text: `${pad(h)}:00` }));
+  }
+
+  treni.forEach((t, i) => {
+    if (t.minuti === null) return;
+    const cx = x(t.minuti);
+    const g = sv('g', { class: 'treno', tabindex: '0', role: 'button', 'aria-label': descrizione(t), 'data-i': i });
+    let forma, alto;
+    if (t.esito === 'arrivato' && t.ritardo !== null) {
+      alto = Math.max(2, base - y(t.ritardo));
+      forma = sv('rect', { class: `barra ${livello(t.ritardo)}`, x: cx - bw / 2, y: base - alto, width: bw, height: alto, rx: 1, style: `--i:${i}` });
+    } else if (t.esito === 'non_arrivato') {
+      alto = Math.max(6, base - y(t.ritardo ?? 3));
+      forma = sv('rect', { class: `barra vuota ${livello(t.ritardo)}`, x: cx - bw / 2, y: base - alto, width: bw, height: alto, rx: 1, style: `--i:${i}` });
     } else {
-      const d = parseInt(r.ritardo_minuti);
-      if (isNaN(d)) { stateClass = ""; }
-      else if (d < 3) { stateClass = "ontime"; }
-      else if (d < 5) { stateClass = "warning"; }
-      else { stateClass = "late"; }
-      stateLabel = r.ritardo_testo || (isNaN(d) ? "" : `${d} min`);
+      alto = 10;
+      forma = sv('path', { class: 'croce', d: `M${cx - 4} ${base - 9}L${cx + 4} ${base - 1}M${cx + 4} ${base - 9}L${cx - 4} ${base - 1}` });
     }
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${r.numero_treno ?? ""}</td>
-      <td>${r.origine ?? ""}</td>
-      <td>${r.orario_arrivo_previsto ?? ""}</td>
-      <td class="${stateClass}">${stateLabel}</td>
-    `;
-    tbody.appendChild(tr);
+    g.append(sv('rect', { class: 'contorno', x: cx - bw / 2 - 3, y: base - alto - 3, width: bw + 6, height: alto + 6, rx: 2 }),
+             forma,
+             sv('rect', { class: 'contatto', x: cx - mezzo, y: padT, width: mezzo * 2, height: plotH + 8 }));
+    svg.append(g);
   });
+
+  const seleziona = i => {
+    selIndice = i;
+    svg.querySelectorAll('.treno').forEach(g => g.classList.toggle('sel', +g.dataset.i === i));
+    dettaglio.textContent = i === null ? dettaglioPredefinito(treni) : descrizione(treni[i]);
+  };
+  svg.addEventListener('click', ev => { const g = ev.target.closest('.treno'); if (g) seleziona(+g.dataset.i); });
+  svg.addEventListener('keydown', ev => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const g = ev.target.closest('.treno');
+    if (g) { ev.preventDefault(); seleziona(+g.dataset.i); }
+  });
+  box.append(svg);
+  seleziona(selIndice !== null && treni[selIndice] ? selIndice : null);
 }
 
-// ---- Nuovo grafico: ritardo per treno nella giornata selezionata ----
-let dailyDelayChartInstance = null;
-function renderDailyDelayChart(detail) {
-  const ctx = document.getElementById("dailyDelayChart");
-  const labels = detail.map(r => r.orario_arrivo_previsto || r.numero_treno);
-  const valori = detail.map(r => {
-    const v = parseFloat(r.ritardo_minuti);
-    return isNaN(v) ? null : v;
-  });
-  const colori = valori.map(v => colorForDelay(v));
+/* ---------- calendario (mese e totale) ---------- */
+function disegnaCalendario() {
+  const box = $('#calendario');
+  box.replaceChildren();
+  const perData = new Map(giorni.map(g => [g.data, g]));
+  const elencoMesi = stato.scope === 'mese' ? [stato.mese] : [...mesi].reverse();
+  for (const ym of elencoMesi) {
+    const [y, m] = ym.split('-').map(Number);
+    const nGiorni = new Date(Date.UTC(y, m, 0)).getUTCDate();
+    const offset = (dataDa(ym + '-01').getUTCDay() + 6) % 7;
+    const griglia = el('div', { class: 'griglia', role: 'group', 'aria-label': meseLungo(ym) });
+    ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'].forEach(s => griglia.append(el('div', { class: 'sigla', 'aria-hidden': 'true', text: s })));
+    for (let i = 0; i < offset; i++) griglia.append(el('div'));
+    for (let d = 1; d <= nGiorni; d++) {
+      const iso = `${ym}-${pad(d)}`, g = perData.get(iso);
+      if (!g) { griglia.append(el('div', { class: 'cella vuota' }, el('span', { class: 'num', text: d }))); continue; }
+      const etichetta = `${giornoMese(iso)}: ${g.medio === null ? 'nessun ritardo medio' : `ritardo medio ${minuti(g.medio)}`}, ${g.osservati} ${g.osservati === 1 ? 'treno' : 'treni'}`;
+      griglia.append(el('button', {
+        type: 'button', class: `cella ${livello(g.medio)}${iso === stato.giorno ? ' sel' : ''}`, 'data-giorno': iso, 'aria-label': etichetta,
+      }, el('span', { class: 'num', text: d }), el('span', { class: 'quanti', text: g.osservati }),
+         el('span', { class: 'val', text: g.medio === null ? '–' : dec(g.medio) })));
+    }
+    box.append(el('div', { class: 'mese' }, el('h3', { text: maiuscola(meseLungo(ym)) }), griglia));
+  }
+}
 
-  const data = {
-    labels,
-    datasets: [{
-      label: "Ritardo (min)",
-      data: valori,
-      spanGaps: false,
-      borderWidth: 3,
-      pointRadius: 4,
-      pointBackgroundColor: colori,
-      pointBorderColor: colori,
-      segment: {
-        borderColor: c => colorForDelay(
-          (((c.p0.parsed.y ?? 0)) + ((c.p1.parsed.y ?? 0))) / 2
-        ),
-      },
-      tension: 0.3,
-    }]
-  };
+/* ---------- distribuzione dei ritardi ---------- */
+function disegnaDistribuzione(t) {
+  const barra = $('#barra-distribuzione'), legenda = $('#legenda'), nota = $('#nota-distribuzione');
+  barra.replaceChildren(); legenda.replaceChildren();
+  const voci = [
+    { nome: 'Entro 3 minuti', c: t.sotto3, liv: 'liv-ok' },
+    { nome: 'Da 3 a 5 minuti', c: t.tra35, liv: 'liv-medio' },
+    { nome: 'Oltre 5 minuti', c: t.oltre5, liv: 'liv-alto' },
+    { nome: 'Soppressi o limitati', c: t.soppressi, liv: 'liv-nd', soppresso: true },
+  ];
+  const tot = voci.reduce((s, v) => s + v.c, 0);
+  barra.hidden = tot === 0;
+  const parti = [];
+  for (const v of voci) {
+    if (v.c > 0) barra.append(el('span', { class: `${v.liv}${v.soppresso ? ' soppresso' : ''}`, style: `flex-grow:${v.c}` }));
+    const pct = tot === 0 ? 0 : 100 * v.c / tot;
+    const testoPct = v.c === 0 ? '0%' : (pct < 1 ? '<1%' : `${Math.round(pct)}%`);
+    legenda.append(el('li', { class: v.liv },
+      el('span', { class: `segno${v.soppresso ? ' soppresso' : ''}` }),
+      el('span', { class: 'nome', text: v.nome }),
+      el('span', { class: `valore${v.soppresso ? ' neutro' : ''}`, text: testoPct }),
+      el('span', { class: 'conta', text: `${n(v.c)} ${v.c === 1 ? 'treno' : 'treni'}` })));
+  }
+  barra.setAttribute('aria-label', 'Distribuzione dei ritardi: ' + voci.map(v => `${v.nome} ${v.c}`).join(', '));
+  let testo = 'Un ritardo di esattamente 5 minuti conta nella fascia da 3 a 5.';
+  if (t.nonConf > 0) testo = `Fuori dal conto: ${n(t.nonConf)} ${t.nonConf === 1 ? 'treno non confermato' : 'treni non confermati'}. ${testo}`;
+  nota.textContent = tot === 0 ? 'Nessun treno con esito noto in questo periodo.' : testo;
+}
 
-  if (dailyDelayChartInstance) {
-    dailyDelayChartInstance.data = data;
-    dailyDelayChartInstance.update();
+/* ---------- elenco dei treni del giorno ---------- */
+function disegnaElenco(treni, tipo) {
+  const ul = $('#elenco');
+  ul.replaceChildren();
+  if (!treni.length) { ul.append(el('li', { class: 'vuoto', text: 'Nessun treno registrato in questo giorno.' })); return; }
+  for (const t of treni) {
+    let liv = 'liv-nd', destra = '', sotto = '', secondaria = '', vuota = false;
+    if (t.esito === 'arrivato' && t.ritardo !== null) {
+      liv = livello(t.ritardo); destra = t.ritardo === 0 ? 'in orario' : `+${t.ritardo} min`;
+      secondaria = confrontoTreno(t, tipo);
+    } else if (t.esito === 'non_arrivato') {
+      vuota = true; destra = 'non confermato'; sotto = t.ultimo ? `ultimo rilevamento ${t.ultimo}` : '';
+    } else {
+      destra = t.esito === 'soppresso' ? 'soppresso' : 'limitato'; secondaria = t.provv;
+    }
+    ul.append(el('li', { class: liv },
+      el('span', { class: `tacca-liv${vuota ? ' vuota' : ''}` }),
+      el('span', { class: 'ora', text: t.orario }),
+      el('span', { class: 'chi' }, `${t.numero} da ${t.origine}`, secondaria ? el('small', { text: secondaria }) : null),
+      el('span', { class: 'esito' }, destra, sotto ? el('small', { text: sotto }) : null)));
+  }
+}
+async function mostraGiorno() {
+  const richiesto = stato.giorno;
+  const striscia = $('#striscia'), dettaglio = $('#dettaglio'), elenco = $('#elenco');
+  if (!giorni.some(g => g.data === richiesto)) {
+    striscia.replaceChildren(el('p', { class: 'vuoto', text: 'Per questo giorno non ci sono treni registrati.' }));
+    dettaglio.textContent = ''; elenco.replaceChildren(); return;
+  }
+  let treni;
+  try { treni = await caricaReport(richiesto); }
+  catch (e) {
+    if (stato.giorno !== richiesto) return;
+    striscia.replaceChildren(el('p', { class: 'vuoto', text: 'Il dettaglio di questo giorno non è disponibile.' }));
+    dettaglio.textContent = ''; elenco.replaceChildren(); return;
+  }
+  if (stato.scope !== 'giorno' || stato.giorno !== richiesto) return;
+  ultimiTreni = treni;
+  disegnaStriscia(treni, primaVolta);
+  primaVolta = false;
+  disegnaElenco(treni, tipoGiorno(richiesto));
+}
+
+/* ---------- per treno: medie, "9 volte su 10", classifica ---------- */
+function disegnaPerTreno() {
+  const box = $('#per-treno'), classifica = $('#classifica');
+  box.replaceChildren(); classifica.replaceChildren();
+  if (!medie.length) {
+    box.append(el('p', { class: 'vuoto', text: 'Questi dati compaiono dopo il prossimo aggiornamento automatico.' }));
+    classifica.append(el('p', { class: 'vuoto', text: 'Anche la classifica compare dopo il prossimo aggiornamento.' }));
     return;
   }
-  dailyDelayChartInstance = new Chart(ctx, {
-    type: "line",
-    data,
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { beginAtZero: true, title: { display: true, text: "minuti di ritardo" } },
-        x: { title: { display: true, text: "orario previsto" } },
-      }
+  const tutte = medie.filter(r => r.tipo === stato.tipo);
+  const fascia = tutte.filter(r => r.inFascia).sort((a, b) => (a.orario < b.orario ? -1 : 1));
+  if (!fascia.length) box.append(el('p', { class: 'vuoto', text: 'Nessun treno in questa fascia per questo tipo di giorno.' }));
+  else {
+    const massimo = Math.max(10, ...fascia.map(r => Math.max(r.p90 ?? 0, r.medio ?? 0, r.mediano ?? 0)));
+    const scala = Math.ceil(massimo / 5) * 5;
+    const pos = v => `${Math.min(100, 100 * v / scala)}%`;
+    const ul = el('ul', { class: 'righe-media' });
+    for (const r of fascia) {
+      const pista = el('div', { class: 'pista', 'aria-hidden': 'true' });
+      if (r.medio !== null) pista.append(el('span', { class: 'media', style: `width:${pos(r.medio)}` }));
+      if (r.mediano !== null) pista.append(el('span', { class: 'mediana', style: `left:${pos(r.mediano)}` }));
+      if (r.p90 !== null) pista.append(el('span', { class: 'nove', style: `left:${pos(r.p90)}` }));
+      const altri = [];
+      if (r.soppressi > 0) altri.push(`${r.soppressi} soppr.`);
+      if (r.nonConf > 0) altri.push(`${r.nonConf} non conf.`);
+      ul.append(el('li', { class: `${livello(r.medio)}${r.arrivati < MIN_GIORNI_CLASSIFICA ? ' pochi' : ''}` },
+        el('div', { class: 'col-ora' }, el('span', { class: 'ora', text: r.orario }), el('small', { text: r.numero })),
+        el('div', { class: 'col-barra' }, pista, altri.length ? el('small', { text: altri.join(', ') }) : null),
+        el('span', { class: 'num-col forte', text: r.medio === null ? 'n/d' : dec(r.medio) }),
+        el('span', { class: 'num-col', text: r.p90 === null ? 'n/d' : String(r.p90) }),
+        el('span', { class: 'num-col', text: String(r.arrivati) })));
     }
-  });
-}
+    box.append(el('div', { class: 'testa-media', 'aria-hidden': 'true' },
+      el('span', { text: 'Arrivo' }), el('span'), el('span', { text: 'Media' }), el('span', { text: '9 su 10' }), el('span', { text: 'Giorni' })), ul);
+  }
 
-// ---- 3. Grafico a ciambella (percentuali) + selettore Giorno/Mese/Totale ----
-let bucketChartInstance = null;
-let summaryRowsGlobal = [];
-let currentScope = "giorno";
-
-function aggregateRows(rows) {
-  const num = (v) => parseFloat(v) || 0;
-  let nArrivatiTot = 0, nSoppTot = 0;
-  let sotto3 = 0, tra3e5 = 0, oltre5 = 0;
-  let sommaRitardoPonderata = 0;
-
-  rows.forEach(r => {
-    const nArr = num(r.n_arrivati);
-    nArrivatiTot += nArr;
-    nSoppTot += num(r.n_soppressi_o_limitati);
-    sotto3 += num(r.n_puntuali_sotto3);
-    tra3e5 += num(r.n_ritardo_3_5);
-    oltre5 += num(r.n_ritardo_oltre5);
-    if (r.ritardo_medio_min !== "" && r.ritardo_medio_min !== undefined) {
-      sommaRitardoPonderata += num(r.ritardo_medio_min) * nArr;
-    }
-  });
-
-  const denom = nArrivatiTot + nSoppTot;
-  const pct = (x) => denom > 0 ? Math.round((x / denom) * 1000) / 10 : 0;
-
-  return {
-    ritardoMedio: nArrivatiTot > 0 ? Math.round((sommaRitardoPonderata / nArrivatiTot) * 10) / 10 : null,
-    pctSotto3: pct(sotto3), pctTra3e5: pct(tra3e5), pctOltre5: pct(oltre5), pctSoppressi: pct(nSoppTot),
-  };
-}
-
-function renderBucketChart(stats) {
-  const ctx = document.getElementById("bucketChart");
-  const data = {
-    labels: ["Puntuale (<3 min)", "Ritardo lieve (3-5 min)", "Ritardo alto (>5 min)", "Soppresso/limitato"],
-    datasets: [{
-      data: [stats.pctSotto3, stats.pctTra3e5, stats.pctOltre5, stats.pctSoppressi],
-      backgroundColor: ["#2e7d32", "#e65100", "#d32f2f", "#616161"],
-    }]
-  };
-  if (bucketChartInstance) {
-    bucketChartInstance.data = data;
-    bucketChartInstance.update();
+  const idonei = tutte.filter(r => r.medio !== null && r.arrivati >= MIN_GIORNI_CLASSIFICA)
+    .sort((a, b) => b.medio - a.medio || b.arrivati - a.arrivati || (a.orario < b.orario ? -1 : 1));
+  if (idonei.length < 2) {
+    classifica.append(el('p', { class: 'vuoto', text: 'Servono più dati: nessun treno ha ancora abbastanza giorni per la classifica.' }));
     return;
   }
-  bucketChartInstance = new Chart(ctx, {
-    type: "doughnut",
-    data,
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { position: "bottom" },
-        tooltip: { callbacks: { label: c => `${c.label}: ${c.parsed}%` } },
-      },
-    }
+  const k = Math.min(5, Math.floor(idonei.length / 2));
+  const lista = (titolo, righe) => el('div', {}, el('h3', { text: titolo }),
+    el('ol', {}, righe.map((r, i) => el('li', { class: livello(r.medio) },
+      el('span', { class: 'posto', text: i + 1 }),
+      el('span', { class: 'ora', text: r.orario }),
+      el('span', { class: 'chi' }, `Treno ${r.numero} da ${r.origine}`, el('br'), el('small', { text: `${r.arrivati} giorni` })),
+      el('span', { class: 'valore', text: `${dec(r.medio)} min` })))));
+  classifica.append(lista('I più in ritardo', idonei.slice(0, k)), lista('I più puntuali', idonei.slice(-k).reverse()));
+}
+
+/* ---------- regia ---------- */
+function render() {
+  aggiornaControlli();
+  const t = aggrega(listaPeriodo());
+  disegnaFrase(t);
+  disegnaDistribuzione(t);
+  const inGiorno = stato.scope === 'giorno';
+  $('#vista-giorno').hidden = !inGiorno;
+  $('#vista-calendario').hidden = inGiorno;
+  $('#sezione-elenco').hidden = !inGiorno;
+  $('#titolo-hero').textContent = inGiorno ? 'Ora per ora' : 'Giorno per giorno';
+  if (inGiorno) mostraGiorno(); else disegnaCalendario();
+  disegnaPerTreno();
+}
+
+function collega() {
+  $('#scelta').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    stato.scope = b.dataset.scope;
+    if (stato.scope === 'mese') stato.mese = stato.giorno.slice(0, 7);
+    render();
+  });
+  $('#scelta-tipo').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    stato.tipo = b.dataset.tipo; aggiornaControlli(); disegnaPerTreno();
+  });
+  $('#prec').addEventListener('click', () => naviga(-1));
+  $('#succ').addEventListener('click', () => naviga(1));
+  const input = $('#input-data');
+  input.min = giorni[0].data; input.max = giorni[giorni.length - 1].data;
+  input.addEventListener('click', () => { try { input.showPicker && input.showPicker(); } catch (e) { /* alcuni browser non lo permettono */ } });
+  input.addEventListener('change', () => { if (input.value) { stato.giorno = input.value; selIndice = null; render(); } });
+  $('#calendario').addEventListener('click', ev => {
+    const c = ev.target.closest('.cella[data-giorno]'); if (c) scegliGiorno(c.dataset.giorno);
+  });
+  let rid;
+  window.addEventListener('resize', () => {
+    clearTimeout(rid);
+    rid = setTimeout(() => { if (stato.scope === 'giorno' && ultimiTreni) disegnaStriscia(ultimiTreni, false); }, 120);
   });
 }
 
-function refreshStats() {
-  let rows = [];
-  if (currentScope === "giorno") {
-    const day = document.getElementById("daySelectStats").value;
-    rows = summaryRowsGlobal.filter(r => r.data === day);
-  } else if (currentScope === "mese") {
-    const mese = document.getElementById("monthSelectStats").value;
-    rows = summaryRowsGlobal.filter(r => r.data && r.data.startsWith(mese));
-  } else {
-    rows = summaryRowsGlobal;
-  }
-  const stats = aggregateRows(rows);
-  document.getElementById("avgDelayValue").textContent =
-    stats.ritardoMedio !== null ? stats.ritardoMedio + " min" : "n/d";
-  renderBucketChart(stats);
+function mostraErrore(dettaglio) {
+  $('#meta').textContent = 'Dati non disponibili.';
+  const box = $('#errore');
+  box.hidden = false;
+  box.replaceChildren(el('strong', { text: 'Non riesco a leggere i dati' }),
+    el('p', { text: 'Il file data/summary.csv non è raggiungibile o è vuoto. Se hai appena caricato il progetto, il primo report compare dopo la mezzanotte del primo giorno di raccolta. Se sono passati più giorni, controlla nella scheda Actions di GitHub che l’ultimo controllo sia andato a buon fine.' }),
+    el('p', { class: 'piccolo', style: 'margin-top:8px', text: String(dettaglio) }));
 }
 
-// ---- 8. Selettore a pillole Giorno/Mese/Totale ----
-function setupScopePills() {
-  const pills = document.querySelectorAll("#scopePills .pill");
-  pills.forEach(btn => {
-    btn.addEventListener("click", () => {
-      pills.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentScope = btn.dataset.scope;
-      document.getElementById("daySelectStats").style.display = currentScope === "giorno" ? "" : "none";
-      document.getElementById("monthSelectStats").style.display = currentScope === "mese" ? "" : "none";
-      refreshStats();
-    });
-  });
+async function avvia() {
+  const [riep, med] = await Promise.allSettled([carica(URL_RIEPILOGO), carica(URL_MEDIE)]);
+  if (riep.status !== 'fulfilled') { mostraErrore(riep.reason && riep.reason.message); return; }
+  giorni = leggiRiepilogo(riep.value);
+  if (!giorni.length) { mostraErrore('summary.csv non contiene giorni'); return; }
+  medie = med.status === 'fulfilled' ? leggiMedie(med.value) : [];
+  mesi = [...new Set(giorni.map(g => g.data.slice(0, 7)))].sort();
+  stato.giorno = giorni[giorni.length - 1].data;
+  stato.mese = stato.giorno.slice(0, 7);
+  const treni = giorni.reduce((s, g) => s + g.osservati, 0);
+  $('#meta').textContent = `${n(giorni.length)} ${giorni.length === 1 ? 'giorno' : 'giorni'} di dati, ${n(treni)} treni registrati. Ultimo giorno completo: ${dataLunga(stato.giorno)}.`;
+  $('#contenuto').hidden = false;
+  collega();
+  render();
 }
-
-function setupStatsControls(summary) {
-  summaryRowsGlobal = summary;
-  const daySelectStats = document.getElementById("daySelectStats");
-  const monthSelectStats = document.getElementById("monthSelectStats");
-
-  summary.slice().reverse().forEach(r => {
-    const opt = document.createElement("option");
-    opt.value = r.data; opt.textContent = r.data;
-    daySelectStats.appendChild(opt);
-  });
-
-  const mesi = [...new Set(summary.map(r => r.data ? r.data.slice(0, 7) : "").filter(Boolean))].sort().reverse();
-  mesi.forEach(m => {
-    const opt = document.createElement("option");
-    opt.value = m; opt.textContent = m;
-    monthSelectStats.appendChild(opt);
-  });
-
-  setupScopePills();
-  daySelectStats.addEventListener("change", refreshStats);
-  monthSelectStats.addEventListener("change", refreshStats);
-  refreshStats();
-}
-
-async function init() {
-  const statusEl = document.getElementById("status");
-  try {
-    const summary = await loadSummary();
-    if (summary.length === 0) {
-      statusEl.textContent = "Nessun dato ancora disponibile.";
-      return;
-    }
-    statusEl.textContent = `${summary.length} giorni di dati raccolti — aggiornato al ${summary[summary.length-1].data}`;
-    renderBanner(summary);
-    renderMetaLine(summary);
-    renderTrendChart(summary);
-    setupStatsControls(summary);
-
-    const select = document.getElementById("daySelect");
-    summary.slice().reverse().forEach(r => {
-      const opt = document.createElement("option");
-      opt.value = r.data;
-      opt.textContent = r.data;
-      select.appendChild(opt);
-    });
-
-    async function refreshDetail() {
-      const day = select.value;
-      const detail = await loadDayDetail(day);
-      renderDailyDelayChart(detail);
-      renderDetailTable(detail);
-    }
-    select.addEventListener("change", refreshDetail);
-    await refreshDetail();
-
-  } catch (e) {
-    statusEl.textContent = "Dati non ancora disponibili (il primo report arriva a fine della prima giornata di raccolta).";
-    console.error(e);
-  }
-}
-
-init();
+avvia();
+})();
 </script>
-
 </body>
 </html>
-
 
